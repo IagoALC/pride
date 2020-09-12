@@ -35,3 +35,6 @@ Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], fu
 |--------------------------------------------------------------------------
 */
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/painel', function(){
+    return view('admin.index');
+});

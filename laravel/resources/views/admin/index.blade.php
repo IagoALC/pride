@@ -10,8 +10,11 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <!-- third party css -->
-        <link href="{{ url(mix('backend/assets/css/style.css')) }}" rel="stylesheet" type="text/css" />
+        <!-- css -->
+        <link href="{{ url(mix('backend/assets/css/icons.css')) }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url(mix('backend/assets/css/vendor.css')) }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url(mix('backend/assets/css/app-dark.css')) }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url(mix('backend/assets/css/app.css')) }}" rel="stylesheet" type="text/css" />
 
     </head>
 

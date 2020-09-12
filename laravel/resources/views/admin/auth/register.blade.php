@@ -107,8 +107,8 @@
             </div>
             <div class="form-group mb-3">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                    <label class="custom-control-label" for="checkbox-signin">Lembrar de mim</label>
+                    <input type="checkbox" class="custom-control-input" id="checkbox-newsletter">
+                    <label class="custom-control-label" for="checkbox-newsletter">Aceito receber e-mails promocionais!</label>
                 </div>
             </div>
             <div class="form-group mb-0 text-center">
@@ -164,10 +164,6 @@
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="checkbox-terms" required="">
                     <label class="custom-control-label" for="checkbox-terms">Eu li e concordo com os <a href="#!">termos de privacidade.</a></label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="checkbox-newsletter">
-                    <label class="custom-control-label" for="checkbox-newsletter">Aceito receber e-mails promocionais!</label>
                 </div>
             </div>
             <div class="form-group mb-0 text-center">
