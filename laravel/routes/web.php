@@ -18,7 +18,7 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 Auth::routes();
-Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], function(){
+Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], function () {
     Route::get('/login', 'Dashboard\DashboardController@loginForm')->name('login');
 
     Route::get('/signup', 'Dashboard\DashboardController@registerForm')->name('register');
@@ -35,6 +35,13 @@ Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], fu
 |--------------------------------------------------------------------------
 */
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/painel', function(){
-    return view('admin.index');
+
+Route::group(['prefix' => '/painel', 'as' => 'painel.', 'middleware' => 'guest'], function () {
+    //Dashboard
+    Route::get('', 'Dashboard\DashboardController@index')->name('index');
+
+    // Minha Conta / Perfil / Timeline
+    Route::group(['prefix' => '/minhaconta', 'as' => 'profile.'], function () {
+        Route::get('', 'Dashboard\ProfileController@index')->name('index');
+    });
 });

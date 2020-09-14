@@ -27,5 +27,8 @@ class DashboardController extends Controller
         return view('admin.auth.pass.forgot');
     }
 
-
+    public function index()
+    {
+        return view('admin.index');
+    }
 }
