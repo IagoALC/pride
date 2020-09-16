@@ -17,7 +17,6 @@ Route::get('/', function () {
 | Auth Routes
 |--------------------------------------------------------------------------
 */
-Auth::routes();
 Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], function () {
     Route::get('/login', 'Dashboard\DashboardController@loginForm')->name('login');
 
@@ -28,7 +27,7 @@ Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], fu
     Route::get('/forgot', 'Dashboard\DashboardController@forgotForm')->name('forgot');
     Route::get('/reset/{token}', 'Dashboard\DashboardController@resetForm')->name('reset');
 });
-
+Auth::routes();
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes

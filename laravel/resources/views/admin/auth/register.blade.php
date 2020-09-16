@@ -50,7 +50,7 @@
             <div class="form-group position-relative">
                 <label for="cpf">CPF</label><small>*</small>
                 <input class="form-control" type="text" id="cpf" required="" placeholder="Informe seu CPF"
-                       name="email" data-toggle="input-mask" data-mask-format="000.000.000-00" data-reverse="true">
+                       name="cpf" data-toggle="input-mask" data-mask-format="000.000.000-00" data-reverse="true">
                 <div class="valid-tooltip">
                     Parece certo!
                 </div>
@@ -73,7 +73,7 @@
                 <label for="password">Senha</label><small>*</small>
                 <div class="input-group input-group-merge">
                     <input class="form-control" type="password" required="" id="password" placeholder="Informe sua senha"
-                           name="pass">
+                           name="password">
                     <div class="input-group-append" data-password="false">
                         <div class="input-group-text">
                             <span class="password-eye"></span>
@@ -91,7 +91,7 @@
                 <label for="confirm_pass">Repita sua senha</label><small>*</small>
                 <div class="input-group input-group-merge">
                     <input class="form-control" type="password" required="" id="confirm_pass" placeholder="Repita sua senha"
-                           name="confirm_pass">
+                           name="password_confirmation">
                     <div class="input-group-append" data-password="false">
                         <div class="input-group-text">
                             <span class="password-eye"></span>
@@ -107,7 +107,7 @@
             </div>
             <div class="form-group mb-3">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="checkbox-newsletter">
+                    <input type="checkbox" class="custom-control-input" id="checkbox-newsletter" name="newsletter" value="newsletter">
                     <label class="custom-control-label" for="checkbox-newsletter">Aceito receber e-mails promocionais!</label>
                 </div>
             </div>
@@ -119,7 +119,7 @@
             <div class="form-group position-relative">
                 <label for="name">Primeiro nome</label><small>*</small>
                 <input class="form-control" type="text" id="name" required="" placeholder="Informe seu primeiro nome"
-                       name="name">
+                       name="first_name">
                 <div class="valid-tooltip">
                     Parece certo!
                 </div>
@@ -141,7 +141,7 @@
             <div class="form-group position-relative">
                 <label for="whatsapp">Whatsapp</label><small>*</small>
                 <input class="form-control" type="text" required="" id="whatsapp" placeholder="Queremos te chamar no zap! 😏"
-                       name="whatsapp" data-toggle="input-mask" data-mask-format="(00) 0 0000-0000">
+                       name="phone" data-toggle="input-mask" data-mask-format="(00) 0 0000-0000">
                 <div class="valid-tooltip">
                     Parece certo!
                 </div>
