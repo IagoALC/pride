@@ -9,7 +9,7 @@
 
 > Status do Projeto: em desenvolvimento :warning:
 ## Descrição do Projeto
-<p align="justify"> Escrever descrição, que ficará com texto justificado </p>
+<p align="justify"> Agendar consultas </p>
 
 ## O que a plataforma é capaz de fazer :checkered_flag:
 
