@@ -1,3 +1,5 @@
+<h1 align="center">[GRUPO 3] Clínica de Estética</h1>
+  
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=laravel&message=framework&color=red&style=for-the-badge&logo=LARAVEL"/>
   <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
