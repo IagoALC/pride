@@ -21,7 +21,7 @@
 
 :trophy: Cadastro de produtos para a loja virtual e o gerenciamento de vendas
 
-## Pré-requisitos para rodar em localhost :exclamation:
+## Pré-requisitos para rodar em localhossssssst :exclamation:
 
 :dash: Composer
 
