@@ -1,73 +1,39 @@
-@extends('layouts.app')
+@extends('auth.master.master')
+
+@section('head-title', 'Entrar')
+@section('head-description', 'Faça login para acessar!')
+@section('content-title', 'Informe seu email e sua senha para entrar na plataforma.')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <div class="ajax_response"></div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <!-- form -->
+    <form action="{{ route('login.do') }}" method="post" autocomplete="off" name="login">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="emailaddress"><i class="uil-envelope"></i> Email</label>
+            <input class="form-control" type="email" id="emailaddress" required="" placeholder="Informe seu email"
+                   name="email" value="admin@pride.com">
         </div>
-    </div>
-</div>
+        <div class="form-group">
+            <a href="" class="text-muted float-right">
+                <small>Esqueceu sua senha?</small>
+            </a>
+            <label for="password"><i class="uil uil-lock-open-alt"></i> Senha</label>
+            <input class="form-control" type="password" required="" id="password" placeholder="Informe sua senha"
+                   name="password" value="1234">
+        </div>
+        <div class="form-group mb-0 text-center">
+            <button class="btn btn-danger btn-block" type="submit"><i class="mdi mdi-login"></i> Log In</button>
+        </div>
+        <!-- social-->
+        <div class="text-center mt-4">
+            <p class="text-muted font-16">Ainda não tem conta? <a href="" class="text-muted"><U>Cadastre-se agora!</U> 😍</a></p>
+        </div>
+    </form>
+    <!-- end form-->
+@endsection
+
+@section('js')
+<script src="{{ url(mix('backend/assets/js/login.js')) }}"></script>
 @endsection

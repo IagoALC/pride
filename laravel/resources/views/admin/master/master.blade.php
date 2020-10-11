@@ -2,23 +2,24 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Pride Dashboard | SEO</title>
+    <meta charset="utf-8"/>
+    <title>@yield('title-head') | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="" name="description" />
-    <meta content="" name="author" />
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('backend/assets/images/favicon.ico') }}">
 
     <!-- css -->
-    <link href="{{ url(mix('backend/assets/css/icons.css')) }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url(mix('backend/assets/css/vendor.css')) }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url(mix('backend/assets/css/app-dark.css')) }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url(mix('backend/assets/css/app.css')) }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url(mix('backend/assets/css/icons.css')) }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url(mix('backend/assets/css/vendor.css')) }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url(mix('backend/assets/css/app-dark.css')) }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url(mix('backend/assets/css/app.css')) }}" rel="stylesheet" type="text/css"/>
+
 
 </head>
 
-<body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+<body class="loading" data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": false}'>
 <!-- Begin page -->
 <div class="wrapper">
     <!-- ========== Left Sidebar Start ========== -->
@@ -35,7 +36,7 @@
         </a>
 
         <!-- LOGO -->
-        <a href="index.blade.php" class="logo text-center logo-dark">
+        <a href="{{ route('admin.home') }}" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         <img src="{{ URL::asset('backend/assets/images/logo-dark.png') }}" alt="" height="26">
                     </span>
@@ -52,7 +53,7 @@
                 <li class="side-nav-title side-nav-item">Navegação</li>
 
                 <li class="side-nav-item">
-                    <a href="index.blade.php" class="side-nav-link">
+                    <a href="{{ route('admin.home') }}" class="side-nav-link">
                         <i class="uil-dashboard"></i>
                         <span> Dashboard </span>
                     </a>
@@ -66,176 +67,20 @@
                 </li>
 
 
-                <li class="side-nav-title side-nav-item">Clínica</li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-store"></i>
-                        <span> Pessoas </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Clientes</a>
-                        </li>
-                        <li>
-                            <a href="#!">Time</a>
-                        </li>
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-envelope"></i>
-                        <span> Tratamentos </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-briefcase"></i>
-                        <span> Procedimentos </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-clipboard-alt"></i>
-                        <span> Clínicas </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="side-nav-title side-nav-item">Blog</li>
 
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-copy-alt"></i>
-                        <span> Posts </span>
+                        <i class="uil-store"></i>
+                        <span> aa </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
+                            <a href="#!">consultas</a>
                         </li>
                     </ul>
                 </li>
-
-                <li class="side-nav-item">
-                    <a href="landing.html" target="_blank" class="side-nav-link">
-                        <i class="uil-globe"></i>
-                        <span class="badge badge-light float-right">Novo</span>
-                        <span> Estatísticas </span>
-                    </a>
-                </li>
-
-                <li class="side-nav-title side-nav-item mt-1">E-commerce</li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-box"></i>
-                        <span> Produtos </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                        <li>
-                    </ul>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-box"></i>
-                        <span> Pedidos </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                        <li>
-                    </ul>
-                </li>
-
-                <li class="side-nav-title side-nav-item mt-1">Gerenciador</li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-box"></i>
-                        <span> E-mail </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Ver Todos</a>
-                        </li>
-                        <li>
-                            <a href="#!">Criar Novo</a>
-                        </li>
-                        <li>
-                    </ul>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-box"></i>
-                        <span> Website </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#!">Editar</a>
-                        </li>
-                        <li>
-                            <a href="#!">Requisitar</a>
-                        </li>
-                        <li>
-                    </ul>
-                </li>
-
 
             </ul>
 
@@ -270,18 +115,21 @@
             <div class="navbar-custom">
                 <ul class="list-unstyled topbar-right-menu float-right mb-0">
                     <li class="dropdown notification-list d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
                             <i class="dripicons-search noti-icon"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
                             <form class="p-3">
-                                <input type="text" class="form-control" placeholder="Pesquisar ..." aria-label="Recipient's username">
+                                <input type="text" class="form-control" placeholder="Pesquisar ..."
+                                       aria-label="Recipient's username">
                             </form>
                         </div>
                     </li>
 
                     <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
                             <i class="dripicons-bell noti-icon"></i>
                             <span class="noti-icon-badge"></span>
                         </a>
@@ -313,7 +161,8 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="notify-icon">
-                                        <img src="assets/images/users/avatar-9.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                        <img src="assets/images/users/avatar-9.jpg" class="img-fluid rounded-circle"
+                                             alt=""/></div>
                                     <p class="notify-details">Maria Eduarda</p>
                                     <p class="text-muted mb-0 user-msg">
                                         <small>Wow ! que ux de dashboard incrivel</small>
@@ -342,7 +191,8 @@
                             </div>
 
                             <!-- All-->
-                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                            <a href="javascript:void(0);"
+                               class="dropdown-item text-center text-primary notify-item notify-all">
                                 Ver Tudo
                             </a>
 
@@ -350,7 +200,8 @@
                     </li>
 
                     <li class="dropdown notification-list d-none d-sm-inline-block">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
                             <i class="dripicons-view-apps noti-icon"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg p-0">
@@ -410,14 +261,16 @@
                     </li>
 
                     <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                        <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#"
+                           role="button" aria-haspopup="false"
                            aria-expanded="false">
                                     <span class="account-user-avatar">
-                                        <img src="{{ URL::asset('backend/assets/images/users/avatar-2.jpg') }}" alt="user-image" class="rounded-circle">
+                                        <img src="{{ Storage::url(Auth::user()->cover )}}"
+                                             alt="user-image" class="rounded-circle">
                                     </span>
                             <span>
-                                        <span class="account-user-name">João Vitor</span>
-                                        <span class="account-position">Administrador</span>
+                                        <span class="account-user-name">Olá, {{ Auth::user()->first_name }}</span>
+                                        <span class="account-position">{{ Auth::user()->role }}</span>
                                     </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -427,7 +280,7 @@
                             </div>
 
                             <!-- item-->
-                            <a href="{{ route('painel.profile.index') }}" class="dropdown-item notify-item">
+                            <a href="{{ route('admin.myProfile') }}" class="dropdown-item notify-item">
                                 <i class="mdi mdi-account-circle mr-1"></i>
                                 <span>Minha conta</span>
                             </a>
@@ -451,7 +304,7 @@
                             </a>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="{{ route('logout') }}" class="dropdown-item notify-item">
                                 <i class="mdi mdi-logout mr-1"></i>
                                 <span>Sair</span>
                             </a>
@@ -466,7 +319,8 @@
                 <div class="app-search dropdown d-none d-lg-block">
                     <form>
                         <div class="input-group">
-                            <input type="text" class="form-control dropdown-toggle" placeholder="Pesquisar..." id="top-search">
+                            <input type="text" class="form-control dropdown-toggle" placeholder="Pesquisar..."
+                                   id="top-search">
                             <span class="mdi mdi-magnify search-icon"></span>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Pesquisar</button>
@@ -508,7 +362,8 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="media">
-                                    <img class="d-flex mr-2 rounded-circle" src="assets/images/users/avatar-3.jpg" alt="Generic placeholder image" height="32">
+                                    <img class="d-flex mr-2 rounded-circle" src="assets/images/users/avatar-3.jpg"
+                                         alt="Generic placeholder image" height="32">
                                     <div class="media-body">
                                         <h5 class="m-0 font-14">Jacob Williams</h5>
                                         <span class="font-12 mb-0">Médico</span>
@@ -519,7 +374,8 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="media">
-                                    <img class="d-flex mr-2 rounded-circle" src="assets/images/users/avatar-9.jpg" alt="Generic placeholder image" height="32">
+                                    <img class="d-flex mr-2 rounded-circle" src="assets/images/users/avatar-9.jpg"
+                                         alt="Generic placeholder image" height="32">
                                     <div class="media-body">
                                         <h5 class="m-0 font-14">Maria Eduarda</h5>
                                         <span class="font-12 mb-0">Administrador</span>
@@ -558,7 +414,8 @@
                                 </form>
                             </div>
                             -->
-                            <h4 class="page-title"><i class="uil-@yield('content-icon')"></i> @yield('content-title')</h4>
+                            <h4 class="page-title"><i class="uil-@yield('content-icon')"></i> @yield('content-title')
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -622,66 +479,66 @@
 
             <!-- Settings -->
             <h5 class="mt-3">Esquema de Cor</h5>
-            <hr class="mt-1" />
+            <hr class="mt-1"/>
 
             <div class="custom-control custom-switch mb-1">
                 <input type="radio" class="custom-control-input" name="color-scheme-mode" value="light"
-                       id="light-mode-check" checked />
+                       id="light-mode-check" checked/>
                 <label class="custom-control-label" for="light-mode-check">Modo Claro</label>
             </div>
 
             <div class="custom-control custom-switch mb-1">
                 <input type="radio" class="custom-control-input" name="color-scheme-mode" value="dark"
-                       id="dark-mode-check" />
+                       id="dark-mode-check"/>
                 <label class="custom-control-label" for="dark-mode-check">Modo Escuro</label>
             </div>
 
             <!-- Width -->
             <h5 class="mt-4">Largura</h5>
-            <hr class="mt-1" />
+            <hr class="mt-1"/>
             <div class="custom-control custom-switch mb-1">
-                <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
+                <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked/>
                 <label class="custom-control-label" for="fluid-check">Fluida</label>
             </div>
             <div class="custom-control custom-switch mb-1">
-                <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check" />
+                <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check"/>
                 <label class="custom-control-label" for="boxed-check">Caixa</label>
             </div>
 
             <!-- Left Sidebar-->
             <h5 class="mt-4">Barra Lateral Esquerda</h5>
-            <hr class="mt-1" />
+            <hr class="mt-1"/>
             <div class="custom-control custom-switch mb-1">
                 <input type="radio" class="custom-control-input" name="theme" value="default" id="default-check"
-                       checked />
+                       checked/>
                 <label class="custom-control-label" for="default-check">Padrão</label>
             </div>
 
             <div class="custom-control custom-switch mb-1">
-                <input type="radio" class="custom-control-input" name="theme" value="light" id="light-check" />
+                <input type="radio" class="custom-control-input" name="theme" value="light" id="light-check"/>
                 <label class="custom-control-label" for="light-check">Claro</label>
             </div>
 
             <div class="custom-control custom-switch mb-3">
-                <input type="radio" class="custom-control-input" name="theme" value="dark" id="dark-check" />
+                <input type="radio" class="custom-control-input" name="theme" value="dark" id="dark-check"/>
                 <label class="custom-control-label" for="dark-check">Escuro</label>
             </div>
 
             <div class="custom-control custom-switch mb-1">
                 <input type="radio" class="custom-control-input" name="compact" value="fixed" id="fixed-check"
-                       checked />
+                       checked/>
                 <label class="custom-control-label" for="fixed-check">Fixa</label>
             </div>
 
             <div class="custom-control custom-switch mb-1">
                 <input type="radio" class="custom-control-input" name="compact" value="condensed"
-                       id="condensed-check" />
+                       id="condensed-check"/>
                 <label class="custom-control-label" for="condensed-check">Condensada</label>
             </div>
 
             <div class="custom-control custom-switch mb-1">
                 <input type="radio" class="custom-control-input" name="compact" value="scrollable"
-                       id="scrollable-check" />
+                       id="scrollable-check"/>
                 <label class="custom-control-label" for="scrollable-check">Rolável</label>
             </div>
 
@@ -697,6 +554,12 @@
 <!-- bundle -->
 <script src="{{ url(mix('backend/assets/js/vendor.js')) }}"></script>
 <script src="{{ url(mix('backend/assets/js/app.js')) }}"></script>
+
+
+@hasSection('js')
+    @yield('js')
+@endif
+
 </body>
 
 </html>

@@ -2,8 +2,10 @@
 
 @section('content-title', 'Dashboard')
 @section('content-icon', 'dashboard')
+@section('title-head', 'Home')
 
 @section('content')
+
     <div class="row">
         <div class="col-xl-3 col-lg-4">
             <div class="card tilebox-one">
@@ -66,7 +68,7 @@
                                 <td>Jacob W.</td>
                                 <td>Limpeza de Pele</td>
                                 <td><i class="mdi mdi-circle text-success"></i> Realizado</td>
-                                <td>Ver</td>
+                                <td>Ver | Editar</td>
                             </tr>
                             <tr>
                                 <td>Rozangela V.</td>

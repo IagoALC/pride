@@ -8,39 +8,34 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Auth Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => '/auth', 'as' => 'auth.', 'middleware' => 'guest'], function () {
-    Route::get('/login', 'Dashboard\DashboardController@loginForm')->name('login');
-
-    Route::get('/signup', 'Dashboard\DashboardController@registerForm')->name('register');
-    Route::get('/checkmail', 'Dashboard\DashboardController@checkMail')->name('checkMail');
-    Route::get('/verification', 'Dashboard\DashboardController@verification')->name('verification');
-
-    Route::get('/forgot', 'Dashboard\DashboardController@forgotForm')->name('forgot');
-    Route::get('/reset/{token}', 'Dashboard\DashboardController@resetForm')->name('reset');
+Route::group(['middleware' => 'guest', 'prefix' => '/auth'], function () {
+    Route::get('/login', 'AuthController@showLoginForm')->name('login');
+    Route::post('/login', 'AuthController@loginDo')->name('login.do');
 });
-Auth::routes();
+
 /*
 |--------------------------------------------------------------------------
-| Dashboard Routes
+| Protected Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+    //Dashboard Home
+    Route::get('', 'Dashboard\DashboardController@home')->name('home');
+    
+    // My Profile
+    Route::get('/minhaconta', 'Dashboard\UserController@myProfile')->name('myProfile');
+    Route::put('/minhaconta/{user}', 'Dashboard\UserController@myProfileUpdate')->name('myProfile.update');
 
-Route::group(['prefix' => '/painel', 'as' => 'painel.', 'middleware' => 'guest'], function () {
-    //Dashboard
-    Route::get('', 'Dashboard\DashboardController@index')->name('index');
-
-    // Minha Conta / Perfil / Timeline
-    Route::group(['prefix' => '/minhaconta', 'as' => 'profile.'], function () {
-        Route::get('', 'Dashboard\ProfileController@index')->name('index');
-    });
 });
+
+/*
+|--------------------------------------------------------------------------
+| Logout Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');

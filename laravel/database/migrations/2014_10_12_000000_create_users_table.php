@@ -15,37 +15,57 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('perfil');
-            $table->string('is_active')->default('sim');
 
-            $table->string('cpf')->unique();
-            $table->string('crm')->nullable()->unique();
-
+            /** role */
+            $table->string('role')->nullable()->default('Cliente');
+            
+            /** data */
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('genre')->nullable()->default('unknow');
+            $table->date('date_of_birth')->nullable();
+            $table->string('place_of_birth')->nullable();
+            $table->string('document')->unique();
+            $table->string('document_secondary', 20)->nullable();
+            $table->string('document_secondary_complement')->nullable();
+            $table->string('cover')->nullable()->default('user/cover/default.png');
+            $table->string('came_from')->nullable();
+            $table->boolean('newsletter')->nullable();
 
-            $table->string('phone');
-            $table->string('alternate_phone')->nullable();
-            
+            /** address */ /** OK */
+            $table->string('zipcode')->nullable();
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('complement')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+
+            /** contact */ /** OK */
+            $table->string('telephone')->nullable();
+            $table->string('cell')->nullable();
+
+            /** access */
+            $table->boolean('appointment')->default(0);
+            $table->boolean('store')->default(0);
+            $table->boolean('blog')->default(0);
+
+            /** email and password */ /** OK */
             $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
-            
-            $table->string('birth')->nullable();
-            $table->string('gender')->nullable();
-            
-            $table->string('came_from')->nullable();
-            $table->string('newsletter')->nullable();
-
-            $table->text('obs')->nullable();
-            
             $table->string('password');
-
             $table->rememberToken();
+
+            /** status */ /** OK */
+            $table->boolean('status')->default(1);
+
+            /** date */ /** OK */
             $table->timestamps();
             $table->softDeletes();
 
-            $table->dateTime('last_login_at');
-            $table->string('last_login_ip');
+            /** ip */ /** OK */
+            $table->dateTime('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
         });
     }
 
