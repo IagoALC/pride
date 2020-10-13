@@ -28,28 +28,3 @@
 :dash: NodeJS
 
 :dash: XAMPP
-
-
-### Participantes: 
-|nome|email|líder|idade|
-| -------- | -------- | -------- | -------- |
-|João Vitor|e.vitonesz@gmail.com|true|22|
-|Eduardo||||
-|Iago||||
-|Suely||||
-|Mikael||||
-|Matheus||||
-|Bárbara||||
-|Leandro||||
-
-### Back-end task  
-
-- [X] Autênticação de novos usuários
-- [ ] Recurso de usuários
-- [ ] Recurso de agendamento de consultas
-
-### Front-end task  
-
-- [X] Layout da dashboard
-- [ ] Página dashboard
-- [ ] Página de usuários
