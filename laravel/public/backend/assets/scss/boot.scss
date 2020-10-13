@@ -1,1 +1,204 @@
-.ajax_load{z-index:8;display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.5)}.ajax_load .ajax_load_box{font-weight:700;margin:auto;text-align:center;color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,.5)}.ajax_load .ajax_load_box_title{margin-top:15px;font-weight:600}.ajax_load .ajax_load_box_circle{border-top:16px solid #f4645f!important;border:16px solid #e3e3e3;border-radius:50%;margin:auto;width:80px;height:80px;-webkit-animation:spin 1.2s linear infinite;animation:spin 1.2s linear infinite}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(1turn)}}@keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.ajax_response{z-index:6;position:fixed;padding:20px 20px 0 0;top:0;right:0;width:300px;max-width:100%}.ajax_response .message{background:#333;font-size:.8em;font-weight:400;border-radius:4px;color:#fff;overflow:hidden;display:flex;align-items:center;width:100%;padding:15px 15px 20px;margin-bottom:15px;position:relative;cursor:pointer}.ajax_response .message:before{flex-basis:0%;margin:-5px 15px 0 0!important;font-size:2.4em;color:rgba(0,0,0,.5)}.ajax_response .message.success{background:#36ba9b}.ajax_response .message.info{background:#39aed9}.ajax_response .message.warning{background:#f5b946}.ajax_response .message.error{background:#d94352}.ajax_response .message_time{content:"";position:absolute;left:0;bottom:0;width:4%;height:5px;background:rgba(0,0,0,.5)}@media (max-width:30em){.ajax_response{width:100%;padding:20px 20px 0}}.gradient{background-size:200% auto;transition-duration:.5s}.gradient:hover{background-position:100%}.gradient-green{background-image:linear-gradient(90deg,#36ba9b 0,#2d9a81 50%,#36ba9b)}.gradient-blue{background-image:linear-gradient(90deg,#39aed9 0,#2699c4 50%,#39aed9)}.gradient-yellow{background-image:linear-gradient(90deg,#f5b946 0,#f3aa1f 50%,#f5b946)}.gradient-red{background-image:linear-gradient(90deg,#d94352 0,#ca2939 50%,#d94352)}.gradient-orange{background-image:linear-gradient(90deg,#f4645f 0,#f13f39 50%,#f4645f)}.message{border-radius:4px;display:flex;flex-wrap:wrap;padding:10px;background:#555;color:#fff;font-size:.875em;text-shadow:1px 1px 0 rgba(0,0,0,.3);transition-duration:.3s;margin-bottom:20px;border:1px solid #333}.message,.message p{width:100%;flex-basis:100%}.message p{display:block}.message-green{color:#fff;background-color:#36ba9b;border-color:#2d9a81}.message-blue{color:#fff;background-color:#39aed9;border-color:#2699c4}.message-yellow{color:#fff;background-color:#f5b946;border-color:#f3aa1f}.message-red{color:#fff;background-color:#d94352;border-color:#ca2939}.message-orange{color:#fff;background-color:#f4645f;border-color:#f13f39}
+/** COLOR's DEFAULT **/
+/** LOGIN - LEFT */
+/** LOGIN - RIGHT */
+/** DASH - SIDEBAR */
+/** DASH - CONTENT */
+/** DASH - RWD */
+/**
+FONT SYSTEM
+ */
+/**
+COLOR SYSTEM
+ */
+/** Auto generate buttons, gradients */
+/**
+RADIUS SYSTEM
+ */
+/**
+INDEX SYSTEM
+ */
+/** Components */
+.ajax_load {
+  z-index: 8;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.ajax_load .ajax_load_box {
+  font-weight: 700;
+  margin: auto;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.ajax_load .ajax_load_box_title {
+  margin-top: 15px;
+  font-weight: 600;
+}
+.ajax_load .ajax_load_box_circle {
+  border-top: 16px solid #F4645F !important;
+  border: 16px solid #e3e3e3;
+  border-radius: 50%;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 1.2s linear infinite;
+  animation: spin 1.2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ajax_response {
+  z-index: 6;
+  position: fixed;
+  padding: 20px 20px 0 0;
+  top: 0;
+  right: 0;
+  width: 300px;
+  max-width: 100%;
+}
+.ajax_response .message {
+  background: #333333;
+  font-size: 0.8em;
+  font-weight: 400;
+  border-radius: 4px;
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 15px 20px 15px;
+  margin-bottom: 15px;
+  position: relative;
+  cursor: pointer;
+}
+.ajax_response .message:before {
+  flex-basis: 0%;
+  margin: -5px 15px 0 0 !important;
+  font-size: 2.4em;
+  color: rgba(0, 0, 0, 0.5);
+}
+.ajax_response .message.success {
+  background: #36BA9B;
+}
+.ajax_response .message.info {
+  background: #39AED9;
+}
+.ajax_response .message.warning {
+  background: #F5B946;
+}
+.ajax_response .message.error {
+  background: #D94352;
+}
+.ajax_response .message_time {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 4%;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 30em) {
+  .ajax_response {
+    width: 100%;
+    padding: 20px 20px 0 20px;
+  }
+}
+.gradient {
+  background-size: 200% auto;
+  transition-duration: 0.5s;
+}
+.gradient:hover {
+  background-position: right center;
+}
+
+.gradient-green {
+  background-image: linear-gradient(to right, #36BA9B 0%, #2d9a81 50%, #36BA9B 100%);
+}
+
+.gradient-blue {
+  background-image: linear-gradient(to right, #39AED9 0%, #2699c4 50%, #39AED9 100%);
+}
+
+.gradient-yellow {
+  background-image: linear-gradient(to right, #F5B946 0%, #f3aa1f 50%, #F5B946 100%);
+}
+
+.gradient-red {
+  background-image: linear-gradient(to right, #D94352 0%, #ca2939 50%, #D94352 100%);
+}
+
+.gradient-orange {
+  background-image: linear-gradient(to right, #F4645F 0%, #f13f39 50%, #F4645F 100%);
+}
+
+.message {
+  border-radius: 4px;
+  width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: #555555;
+  color: #ffffff;
+  font-size: 0.875em;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+  transition-duration: 0.3s;
+  margin-bottom: 20px;
+  border: 1px solid #333333;
+}
+.message p {
+  flex-basis: 100%;
+  width: 100%;
+  display: block;
+}
+
+.message-green {
+  color: #ffffff;
+  background-color: #36BA9B;
+  border-color: #2d9a81;
+}
+
+.message-blue {
+  color: #ffffff;
+  background-color: #39AED9;
+  border-color: #2699c4;
+}
+
+.message-yellow {
+  color: #ffffff;
+  background-color: #F5B946;
+  border-color: #f3aa1f;
+}
+
+.message-red {
+  color: #ffffff;
+  background-color: #D94352;
+  border-color: #ca2939;
+}
+
+.message-orange {
+  color: #ffffff;
+  background-color: #F4645F;
+  border-color: #f13f39;
+}

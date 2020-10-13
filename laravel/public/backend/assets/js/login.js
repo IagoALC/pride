@@ -1,1 +1,57 @@
-$(function(){$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}}),$('form[name="login"]').submit(function(e){e.preventDefault();const a=$(this),t=a.attr("action"),s=a.find('input[name="email"]').val(),i=a.find('input[name="password"]').val();$.post(t,{email:s,password:i},function(e){if(console.log(e),e.message&&n(e.message,3),e.redirect){setTimeout(function(){window.location.href=e.redirect},3e3)}},"json")});var e=3;function n(e,n){var a=$(e);a.append("<div class='message_time'></div>"),a.find(".message_time").animate({width:"100%"},1e3*n,function(){$(this).parents(".message").fadeOut(200)}),$(".ajax_response").append(a)}$(".ajax_response .message").each(function(a,t){n(t,e+=1)}),$(".ajax_response").on("click",".message",function(e){$(this).effect("bounce").fadeOut(1)})});
+$(function() {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('form[name="login"]').submit(function(event) {
+        event.preventDefault();
+
+        const form = $(this);
+        const action = form.attr('action');
+        const email = form.find('input[name="email"]').val();
+        const password = form.find('input[name="password"]').val();
+
+        $.post(action, { email: email, password: password }, function(response) {
+            console.log(response);
+
+            if (response.message) {
+                ajaxMessage(response.message, 3);
+            }
+
+            if (response.redirect) {
+                var delay = 3000;
+                setTimeout(function() {
+                    window.location.href = response.redirect;
+                }, delay)
+            }
+        }, 'json');
+
+    });
+
+    // AJAX RESPONSE
+    var ajaxResponseBaseTime = 3;
+
+    function ajaxMessage(message, time) {
+        var ajaxMessage = $(message);
+
+        ajaxMessage.append("<div class='message_time'></div>");
+        ajaxMessage.find(".message_time").animate({ "width": "100%" }, time * 1000, function() {
+            $(this).parents(".message").fadeOut(200);
+        });
+
+        $(".ajax_response").append(ajaxMessage);
+    }
+
+    // AJAX RESPONSE MONITOR
+    $(".ajax_response .message").each(function(e, m) {
+        ajaxMessage(m, ajaxResponseBaseTime += 1);
+    });
+
+    // AJAX MESSAGE CLOSE ON CLICK
+    $(".ajax_response").on("click", ".message", function(e) {
+        $(this).effect("bounce").fadeOut(1);
+    });
+});

@@ -18,9 +18,6 @@ class UserController extends Controller
 
     public function myProfileUpdate(Request $request, User $user)
     {
-
-
-
         // Validar, tratar erros ...
 
         $user->role = $request->role;

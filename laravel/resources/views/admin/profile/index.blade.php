@@ -138,9 +138,10 @@
                     <div class="tab-content">
                         <div class="tab-pane" id="settings">
                             <form autocomplete="off" action="{{ route('admin.myProfile.update', ['user'=>$user->id]) }}"
-                                 method="post" data-plugin="dropzone"
-                                 data-previews-container="#file-previews"
-                                 data-upload-preview-template="#uploadPreviewTemplate" id="myAwesomeDropzone" enctype="multipart/form-data">
+                                  method="post" data-plugin="dropzone"
+                                  data-previews-container="#file-previews"
+                                  data-upload-preview-template="#uploadPreviewTemplate" id="myAwesomeDropzone"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -389,7 +390,8 @@
                                                                 </div>
                                                                 <div class="col pl-0">
                                                                     <a href="javascript:void(0);"
-                                                                       class="text-muted font-weight-bold" data-dz-name></a>
+                                                                       class="text-muted font-weight-bold"
+                                                                       data-dz-name></a>
                                                                     <p class="mb-0" data-dz-size></p>
                                                                 </div>
                                                                 <div class="col-auto">
@@ -653,8 +655,8 @@
                                                         class="mdi mdi-content-save"></i> Salvar
                                             </button>
                                         </div>
-                                        </div>
-                                    </form>
+                                    </div>
+                            </form>
                             </form>
                             <!-- end settings content-->
 
@@ -663,11 +665,12 @@
                 </div> <!-- end card -->
             </div> <!-- end col -->
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('js')
-        <!-- plugin js -->
-            <script src="{{ URL::asset('backend/assets/js/vendor/dropzone.min.js') }}"></script>
-            <!-- init js -->
-            <script src="{{ URL::asset('backend/assets/js/ui/component.fileupload.js') }}"></script>
+@section('js')
+    <!-- plugin js -->
+    <script src="{{ URL::asset('backend/assets/js/vendor/dropzone.min.js') }}"></script>
+    <!-- init js -->
+    <script src="{{ URL::asset('backend/assets/js/ui/component.fileupload.js') }}"></script>
 @endsection

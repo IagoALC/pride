@@ -16,6 +16,7 @@
     <link href="{{ url(mix('backend/assets/css/app-dark.css')) }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url(mix('backend/assets/css/app.css')) }}" rel="stylesheet" type="text/css"/>
 
+    @yield('css')
 
 </head>
 
@@ -26,7 +27,7 @@
     <div class="left-side-menu">
 
         <!-- LOGO -->
-        <a href="index.blade.php" class="logo text-center logo-light">
+        <a href="{{ route('admin.home') }}" class="logo text-center logo-light">
                     <span class="logo-lg">
                         <img src="{{ URL::asset('backend/assets/images/logo.png') }}" alt="" height="26">
                     </span>
@@ -61,40 +62,54 @@
 
                 <li class="side-nav-item">
                     <a href="#!" class="side-nav-link">
-                        <i class="uil-dashboard"></i>
+                        <i class="uil-arrow-left"></i>
                         <span> Ver site </span>
                     </a>
                 </li>
-
 
                 <li class="side-nav-title side-nav-item">Blog</li>
 
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-store"></i>
-                        <span> aa </span>
+                        <i class="uil-books"></i>
+                        <span> Artigos </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="#!">consultas</a>
+                            <a href="{{ route('admin.blog.index') }}">
+                                <i class="uil-file-check-alt"></i>
+                                Publicados
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.blog.create') }}">
+                                <i class="uil-file-plus-alt"></i>
+                                Escrever novo
+                            </a>
                         </li>
                     </ul>
                 </li>
 
+                <li class="side-nav-item">
+                    <a href="#!" class="side-nav-link">
+                        <i class="uil-chart"></i>
+                        <span class="badge badge-warning-lighten float-right">Premium</span>
+                        <span> Estatísticas </span>
+                    </a>
+                </li>
+
             </ul>
 
-            <!-- Help Box
-            <div class="help-box text-white text-center">
+            <div class="help-box text-white text-center bg-warning">
                 <a href="javascript: void(0);" class="float-right close-btn text-white">
                     <i class="mdi mdi-close"></i>
                 </a>
-                <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
-                <h5 class="mt-3">Unlimited Access</h5>
-                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
+                <img src="{{ URL::asset('backend/assets/images/help-icon.svg') }}" height="90" alt="Helper Icon Image" />
+                <h5 class="mt-3">Recursos Ilimitados</h5>
+                <p class="mb-3">Faça upgrade para planejar e obter acesso a relatórios ilimitados</p>
                 <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
             </div>
-            end Help Box -->
             <!-- End Sidebar -->
 
             <div class="clearfix"></div>
@@ -114,145 +129,6 @@
             <!-- Topbar Start -->
             <div class="navbar-custom">
                 <ul class="list-unstyled topbar-right-menu float-right mb-0">
-                    <li class="dropdown notification-list d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-search noti-icon"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                            <form class="p-3">
-                                <input type="text" class="form-control" placeholder="Pesquisar ..."
-                                       aria-label="Recipient's username">
-                            </form>
-                        </div>
-                    </li>
-
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-bell noti-icon"></i>
-                            <span class="noti-icon-badge"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-
-                            <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="m-0">
-                                            <span class="float-right">
-                                                <a href="javascript: void(0);" class="text-dark">
-                                                    <small>Limpar</small>
-                                                </a>
-                                            </span>Notificação
-                                </h5>
-                            </div>
-
-                            <div style="max-height: 230px;" data-simplebar>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-info">
-                                        <i class="mdi mdi-heart"></i>
-                                    </div>
-                                    <p class="notify-details">Jacob Williams curtiu seu
-                                        <b>post</b>
-                                        <small class="text-muted">1 min atrás</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/avatar-9.jpg" class="img-fluid rounded-circle"
-                                             alt=""/></div>
-                                    <p class="notify-details">Maria Eduarda</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Wow ! que ux de dashboard incrivel</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-info">
-                                        <i class="mdi mdi-account-plus"></i>
-                                    </div>
-                                    <p class="notify-details">Novo usuário registrado.
-                                        <small class="text-muted">5 horas atrás</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-primary">
-                                        <i class="mdi mdi-comment-account-outline"></i>
-                                    </div>
-                                    <p class="notify-details">Jacob Williams comentou no Blog
-                                        <small class="text-muted">1 dia atrás</small>
-                                    </p>
-                                </a>
-                            </div>
-
-                            <!-- All-->
-                            <a href="javascript:void(0);"
-                               class="dropdown-item text-center text-primary notify-item notify-all">
-                                Ver Tudo
-                            </a>
-
-                        </div>
-                    </li>
-
-                    <li class="dropdown notification-list d-none d-sm-inline-block">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-view-apps noti-icon"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg p-0">
-
-                            <div class="p-2">
-                                <div class="row no-gutters">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/slack.png" alt="slack">
-                                            <span>Slack</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/github.png" alt="Github">
-                                            <span>GitHub</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/dribbble.png" alt="dribbble">
-                                            <span>Dribbble</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="row no-gutters">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
-                                            <span>Bitbucket</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/dropbox.png" alt="dropbox">
-                                            <span>Dropbox</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/g-suite.png" alt="G Suite">
-                                            <span>G Suite</span>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>
 
                     <li class="notification-list">
                         <a class="nav-link right-bar-toggle" href="javascript: void(0);">
@@ -316,75 +192,6 @@
                 <button class="button-menu-mobile open-left disable-btn">
                     <i class="mdi mdi-menu"></i>
                 </button>
-                <div class="app-search dropdown d-none d-lg-block">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control dropdown-toggle" placeholder="Pesquisar..."
-                                   id="top-search">
-                            <span class="mdi mdi-magnify search-icon"></span>
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">Pesquisar</button>
-                            </div>
-                        </div>
-
-                    </form>
-
-                    <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                        <!-- item-->
-                        <div class="dropdown-header noti-title">
-                            <h5 class="text-overflow mb-2">Encontrado <span class="text-danger">5</span> resultados</h5>
-                        </div>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="uil-notes font-16 mr-1"></i>
-                            <span>Relatório de Análise</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="uil-life-ring font-16 mr-1"></i>
-                            <span>Como eu posso te ajudar?</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="uil-cog font-16 mr-1"></i>
-                            <span>Configurações de usuário</span>
-                        </a>
-
-                        <!-- item-->
-                        <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow mb-2 text-uppercase">Usuários</h6>
-                        </div>
-
-                        <div class="notification-list">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="media">
-                                    <img class="d-flex mr-2 rounded-circle" src="assets/images/users/avatar-3.jpg"
-                                         alt="Generic placeholder image" height="32">
-                                    <div class="media-body">
-                                        <h5 class="m-0 font-14">Jacob Williams</h5>
-                                        <span class="font-12 mb-0">Médico</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="media">
-                                    <img class="d-flex mr-2 rounded-circle" src="assets/images/users/avatar-9.jpg"
-                                         alt="Generic placeholder image" height="32">
-                                    <div class="media-body">
-                                        <h5 class="m-0 font-14">Maria Eduarda</h5>
-                                        <span class="font-12 mb-0">Administrador</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- end Topbar -->
 
@@ -395,25 +202,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <!--
+
                             <div class="page-title-right">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control form-control-light" id="dash-daterange">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text bg-primary border-primary text-white">
-                                                    <i class="mdi mdi-calendar-range font-13"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="javascript: void(0);" class="btn btn-primary ml-2">
-                                        <i class="mdi mdi-autorenew"></i>
-                                    </a>
-                                </form>
+                                @yield('content-top-right')
                             </div>
-                            -->
+
                             <h4 class="page-title"><i class="uil-@yield('content-icon')"></i> @yield('content-title')
                             </h4>
                         </div>

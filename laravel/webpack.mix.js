@@ -15,6 +15,7 @@ mix
     // Auth
     .sass('resources/views/admin/assets/scss/boot.scss', 'public/backend/assets/scss/boot.scss')
     .scripts('resources/views/admin/assets/js/login.js', 'public/backend/assets/js/login.js')
+    .scripts('resources/views/admin/assets/js/recursos/blog/store.js', 'public/backend/assets/js/recursos/blog/store.js')
 
     // Backend
     .styles('resources/views/admin/assets/css/vendor/jquery-jvectormap-1.2.2.css', 'public/backend/assets/css/vendor.css')
@@ -35,6 +36,8 @@ mix
     .copyDirectory('resources/views/admin/assets/fonts', 'public/backend/assets/fonts')
     .copyDirectory('resources/views/admin/assets/images', 'public/backend/assets/images')
     .copyDirectory('resources/views/admin/assets/js/vendor', 'public/backend/assets/js/vendor')
+    .copyDirectory('resources/views/admin/assets/js/pages', 'public/backend/assets/js/pages')
+    .copyDirectory('resources/views/admin/assets/css/vendor', 'public/backend/assets/css/vendor')
     .copyDirectory('resources/views/admin/assets/js/ui', 'public/backend/assets/js/ui')
 
     .options({
