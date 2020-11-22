@@ -15,6 +15,7 @@ mix
     // Auth
     .sass('resources/views/admin/assets/scss/boot.scss', 'public/backend/assets/scss/boot.scss')
     .scripts('resources/views/admin/assets/js/login.js', 'public/backend/assets/js/login.js')
+    .scripts('resources/views/admin/assets/js/register.js', 'public/backend/assets/js/register.js')
     .scripts('resources/views/admin/assets/js/recursos/blog/store.js', 'public/backend/assets/js/recursos/blog/store.js')
 
     // Backend

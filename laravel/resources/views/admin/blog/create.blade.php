@@ -7,6 +7,18 @@
 @section('css')
     <!-- SimpleMDE css -->
     <link href="{{ URL::asset('backend/assets/css/vendor/simplemde.min.css') }}" rel="stylesheet" type="text/css"/>
+    
+    <script>
+        $(document).ready(function() {
+            $("#fileDiv").click(function(){
+                $("#file").click();
+            });
+        });
+    </script>
+
+    <style>
+        #file{position:absolute; top:-100px;}
+    </style>
 @endsection
 
 @section('content-top-right')
@@ -69,13 +81,13 @@
                     <input type="text" id="simpleinput" class="form-control" placeholder="Dica: o subtítulo serve para dar aos leitores uma visão geral do que terá no conteúdo artigo." maxlength="191" data-toggle="maxlength" data-threshold="91" data-placement="top" id="subtitle" name="subtitle" value="{{ old('subtitle') }}">
                 </div>
             </div>
-            <input type="file" name="files[]">
+
             {{-- Cover --}}
-            <div class="col-12">
+            <div class="col-12" id="fileDiv" onclick="getElementById('file').click()>
                 <label for="simpleinput">Insira uma <b>imagem</b> para ser a capa do seu artigo.</label>
                 <div class="dropzone">
-                    <div class="fallback">
-                        <input type="file" id="file" name="cover" multiple/>
+                    <div class="">
+                        <input type="file" id="file" name="files"/>
                     </div>
 
                     <div class="dz-message needsclick">
@@ -122,7 +134,7 @@
                     <small>*Tamanho mínimo: 50 caracteres.</small>
                     <small>Para mais informações, leia o <a href="https://simplemde.com/markdown-guide">guia</a>.
                     </small>
-                    <textarea id="simplemde1" name="text" placeholder="Comece a digitar ...">{{ old('content', '') }}</textarea>
+                    <textarea id="simplemde1" name="text" placeholder="Comece a digitar ...">{{ old('text', '') }}</textarea>
                 </div>
             </div>
 

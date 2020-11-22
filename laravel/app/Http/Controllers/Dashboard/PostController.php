@@ -59,21 +59,25 @@ class PostController extends Controller
     {
         // categorias, mensagem de sucesso, validação ...
 
+        echo "<pre>";
+        var_dump($request->files);
+        echo "</pre>";
+        die;
         $postUri = $this->setUri($request->title);
         $post = new Post();
+
+        if ($request->allFiles()) {
+            foreach ($request->allFiles()['files'] as $image) {
+                $post->cover = $image->store('post/cover' . $post->id);
+                unset($image);
+            }
+        }
 
         $post->author = Auth::user()->id;
         $post->uri = $postUri;
         $post->title = $request->title;
         $post->subtitle = $request->subtitle;
         $post->content = $request->text;
-
-        if ($request->allFiles()) {
-            foreach ($request->allFiles()['files'] as $image) {
-                $post->cover = $image->store('post/cover' . $post->id);
-                unset($postCover);
-            }
-        }
 
         $post->save();
 

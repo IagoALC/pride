@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -59,5 +60,59 @@ class AuthController extends Controller
             'last_login_at' => date('Y-m-d H:i:s'),
             'last_login_ip' => $ip
         ]);
+    }
+
+    public function showRegisterForm()
+    {
+        if (Auth::check() === true) {
+            return redirect()->route('admin.home');
+        }
+
+        return view('auth.register');
+    }
+
+    public function registerDo(Request $request)
+    {
+        if (in_array('', $request->only('first', 'last', 'cpf', 'email', 'password'))) {
+            $json['message'] = $this->message->dark("Oops, informe todos os dados para efetuar o cadastro")->render();
+            return response()->json($json);
+        }
+
+        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            $json['message'] = $this->message->dark("Oops, informe um e-mail válido")->render();
+            return response()->json($json);
+        }
+
+        $verificaCPF = DB::table('users')
+            ->where('document', '=', $request->cpf)
+            ->count('document');
+
+        if ($verificaCPF > 0) {
+            $json['message'] = $this->message->dark("Oops, CPF já cadastrado em nosso sistema")->render();
+            return response()->json($json);
+        }
+
+        $verificaEmail = DB::table('users')
+            ->where('email', '=', $request->email)
+            ->count('email');
+
+        if ($verificaEmail > 0) {
+            $json['message'] = $this->message->dark("Oops, email já cadastrado em nosso sistema")->render();
+            return response()->json($json);
+        }
+
+        $user = new User();
+        $user->first_name = $request->first;
+        $user->last_name = $request->last;
+        $user->document = $request->cpf;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->appointment = 1;
+        $user->status = 1;
+        $user->save();
+
+        $json['message'] = $this->message->success("Você foi cadastrado com sucesso")->render();
+        $json['redirect'] = route('login');
+        return response()->json($json);
     }
 }

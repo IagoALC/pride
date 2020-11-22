@@ -15,12 +15,15 @@
     <link href="{{ url(mix('backend/assets/css/vendor.css')) }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url(mix('backend/assets/css/app-dark.css')) }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url(mix('backend/assets/css/app.css')) }}" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
     @yield('css')
 
 </head>
 
-<body class="loading" data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": false}'>
+<body class="loading"
+      data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": false}'>
 <!-- Begin page -->
 <div class="wrapper">
     <!-- ========== Left Sidebar Start ========== -->
@@ -67,50 +70,74 @@
                     </a>
                 </li>
 
-                <li class="side-nav-title side-nav-item">Blog</li>
+                @if(Auth::user()->appointment == 1)
+                    <li class="side-nav-title side-nav-item">Consultas</li>
 
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="uil-books"></i>
-                        <span> Artigos </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="{{ route('admin.blog.index') }}">
-                                <i class="uil-file-check-alt"></i>
-                                Publicados
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.blog.create') }}">
-                                <i class="uil-file-plus-alt"></i>
-                                Escrever novo
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="#!" class="side-nav-link">
+                            <i class="uil-calendar-alt"></i>
+                            <span class="badge badge-danger-lighten float-right">Black Friday</span>
+                            <span> Agendar </span>
+                        </a>
+                    </li>
 
-                <li class="side-nav-item">
-                    <a href="#!" class="side-nav-link">
-                        <i class="uil-chart"></i>
-                        <span class="badge badge-warning-lighten float-right">Premium</span>
-                        <span> Estatísticas </span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="#!" class="side-nav-link">
+                            <i class="uil-history-alt"></i>
+                            <span> Histórico </span>
+                        </a>
+                    </li>
+                @endif
+
+                @if(Auth::user()->blog == 1)
+                    <li class="side-nav-title side-nav-item">Blog</li>
+
+                    <li class="side-nav-item">
+                        <a href="javascript: void(0);" class="side-nav-link">
+                            <i class="uil-books"></i>
+                            <span> Artigos </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="side-nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('admin.blog.index') }}">
+                                    <i class="uil-file-check-alt"></i>
+                                    Publicados
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.blog.create') }}">
+                                    <i class="uil-file-plus-alt"></i>
+                                    Escrever novo
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="#!" class="side-nav-link">
+                            <i class="uil-chart"></i>
+                            <span class="badge badge-warning-lighten float-right">Premium</span>
+                            <span> Estatísticas </span>
+                        </a>
+                    </li>
+                @endif
 
             </ul>
 
-            <div class="help-box text-white text-center bg-warning">
-                <a href="javascript: void(0);" class="float-right close-btn text-white">
-                    <i class="mdi mdi-close"></i>
-                </a>
-                <img src="{{ URL::asset('backend/assets/images/help-icon.svg') }}" height="90" alt="Helper Icon Image" />
-                <h5 class="mt-3">Recursos Ilimitados</h5>
-                <p class="mb-3">Faça upgrade para planejar e obter acesso a relatórios ilimitados</p>
-                <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
-            </div>
-            <!-- End Sidebar -->
+            @if(Auth::user()->role == 'Administrador')
+                <div class="help-box text-white text-center bg-warning">
+                    <a href="javascript: void(0);" class="float-right close-btn text-white">
+                        <i class="mdi mdi-close"></i>
+                    </a>
+                    <img src="{{ URL::asset('backend/assets/images/help-icon.svg') }}" height="90"
+                         alt="Helper Icon Image"/>
+                    <h5 class="mt-3">Recursos Ilimitados</h5>
+                    <p class="mb-3">Faça upgrade para planejar e obter acesso a relatórios ilimitados</p>
+                    <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
+                </div>
+        @endif
+        <!-- End Sidebar -->
 
             <div class="clearfix"></div>
 
