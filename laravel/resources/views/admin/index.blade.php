@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="row">
-        @if(false)
+        @if(Auth::user()->role == 'doctor')
             <div class="col-xl-3 col-lg-4">
                 <div class="card tilebox-one">
                     <div class="card-body">
@@ -132,8 +132,8 @@
                     </div>
                 </div>
             </div>
-            @else
-            Em construção...
+            @elseif(Auth::user()->role == 'client')
+                Em construção cliente...
         @endif
     </div>
 @endsection

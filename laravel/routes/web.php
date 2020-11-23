@@ -35,7 +35,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['auth'], 
     Route::put('/minhaconta/{user}', 'UserController@myProfileUpdate')->name('myProfile.update');
 
     // Appointment
-    Route::get('/consultas/agendar', 'PostController@trashed')->name('blog.trashed');
+    Route::get('/consultas/historico', 'AppointmentController@historic')->name('consultas.historic');
     Route::resource('consultas', 'AppointmentController');
 
     // Blog

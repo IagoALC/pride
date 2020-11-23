@@ -14,10 +14,16 @@ $(function() {
         const first_name = form.find('input[name="first_name"]').val();
         const last_name = form.find('input[name="last_name"]').val();
         const document = form.find('input[name="document"]').val();
+        const genre = form.find('select[name="genre"]').val();
+        const date_of_birth = form.find('input[name="date_of_birth"]').val();
+        const came_from = form.find('select[name="came_from"]').val();
+        const cell = form.find('input[name="cell"]').val();
         const email = form.find('input[name="email"]').val();
         const password = form.find('input[name="password"]').val();
+        const newsletter = form.find('input[name="newsletter"]').val();
 
-        $.post(action, { first: first_name, last: last_name, cpf: document, email: email, password: password }, function(response) {
+        $.post(action, { first: first_name, last: last_name, cpf: document, genre: genre, dateOfBirth: date_of_birth, cameFrom: came_from,
+            cell: cell, email: email, password: password, newsletter: newsletter }, function(response) {
             console.log(response);
 
             if (response.message) {

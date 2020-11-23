@@ -73,7 +73,8 @@ class AuthController extends Controller
 
     public function registerDo(Request $request)
     {
-        if (in_array('', $request->only('first', 'last', 'cpf', 'email', 'password'))) {
+        if (in_array('', $request->only('first', 'last', 'cpf', 'genre', 'dateOfBirth', 'cameFrom', 'cell',
+            'email', 'password', 'newsletter'))) {
             $json['message'] = $this->message->dark("Oops, informe todos os dados para efetuar o cadastro")->render();
             return response()->json($json);
         }
@@ -92,6 +93,15 @@ class AuthController extends Controller
             return response()->json($json);
         }
 
+        $verificaCell = DB::table('users')
+            ->where('cell', '=', $request->cell)
+            ->count('cell');
+
+        if ($verificaCell > 0) {
+            $json['message'] = $this->message->dark("Oops, celular já cadastrado em nosso sistema")->render();
+            return response()->json($json);
+        }
+
         $verificaEmail = DB::table('users')
             ->where('email', '=', $request->email)
             ->count('email');
@@ -105,10 +115,13 @@ class AuthController extends Controller
         $user->first_name = $request->first;
         $user->last_name = $request->last;
         $user->document = $request->cpf;
+        $user->genre = $request->genre;
+        $user->date_of_birth = $request->dateOfBirth;
+        $user->came_from = $request->cameFrom;
+        $user->cell = $request->cell;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->appointment = 1;
-        $user->status = 1;
+        $user->newsletter = $request->newsletter;
         $user->save();
 
         $json['message'] = $this->message->success("Você foi cadastrado com sucesso")->render();

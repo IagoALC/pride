@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
+    public function historic()
+    {
+        return view('admin.appointment.historic');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('appointment.schedule');
+        return view('admin.appointment.schedule');
     }
 
     /**

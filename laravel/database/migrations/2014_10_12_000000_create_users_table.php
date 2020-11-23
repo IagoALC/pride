@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
 
             /** role */
-            $table->string('role')->nullable()->default('Cliente');
+            $table->string('role')->nullable()->default('client');
             
             /** data */
             $table->string('first_name');
@@ -46,9 +46,9 @@ class CreateUsersTable extends Migration
             $table->string('cell')->nullable();
 
             /** access */
-            $table->boolean('appointment')->default(0);
-            $table->boolean('store')->default(0);
+            $table->boolean('appointment')->default(1);
             $table->boolean('blog')->default(0);
+            $table->boolean('store')->default(0);
 
             /** email and password */ /** OK */
             $table->string('email')->nullable()->unique();
