@@ -75,7 +75,7 @@
 
                     @if(Auth::user()->role == 'client')
                         <li class="side-nav-item">
-                            <a href="{{ route('admin.consultas.index') }}" class="side-nav-link">
+                            <a href="{{ route('admin.consultas.create') }}" class="side-nav-link">
                                 <i class="uil-calendar-alt"></i>
                                 <span class="badge badge-danger-lighten float-right">Black Friday</span>
                                 <span> Agendar </span>
@@ -169,11 +169,13 @@
             <div class="navbar-custom">
                 <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-                    <li class="notification-list">
-                        <a class="nav-link right-bar-toggle" href="javascript: void(0);">
-                            <i class="dripicons-gear noti-icon"></i>
-                        </a>
-                    </li>
+                    @if(Auth::user()->role == 'administrator')
+                        <li class="notification-list">
+                            <a class="nav-link right-bar-toggle" href="javascript: void(0);">
+                                <i class="dripicons-gear noti-icon"></i>
+                            </a>
+                        </li>
+                    @endif
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#"
@@ -184,14 +186,14 @@
                                              alt="user-image" class="rounded-circle">
                                     </span>
                             <span>
-                                        <span class="account-user-name">Olá, {{ Auth::user()->first_name }}</span>
-                                        <span class="account-position">{{ Auth::user()->role }}</span>
+                                        <span class="account-user-name">{{ Auth::user()->first_name }}</span>
+                                        <span class="account-position">Pride</span>
                                     </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                             <!-- item-->
                             <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Bem-vindo !</h6>
+                                <h6 class="text-overflow m-0">Orgulho de ser quem você é.</h6>
                             </div>
 
                             <!-- item-->
@@ -210,12 +212,6 @@
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="mdi mdi-lifebuoy mr-1"></i>
                                 <span>Suporte</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="mdi mdi-lock-outline mr-1"></i>
-                                <span>Bloquear</span>
                             </a>
 
                             <!-- item-->

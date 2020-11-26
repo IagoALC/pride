@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Appointment;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -29,7 +31,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.appointment.schedule');
     }
 
     /**
@@ -40,7 +42,14 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $appointment = new Appointment();
+        $appointment->code = 'AEDD';
+        $appointment->patient_id = Auth::user()->id;
+        $appointment->doctor_id = Auth::user()->id;
+        $appointment->service_id = Auth::user()->id;
+        $appointment->save();
+
+        return redirect()->route('admin.home');
     }
 
     /**

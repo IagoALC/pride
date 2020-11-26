@@ -14,7 +14,17 @@ class CreateAppointmentsTable extends Migration
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+
+            $table->string('code');
+            $table->unsignedInteger('patient_id');
+            $table->unsignedInteger('doctor_id');
+
+            $table->unsignedInteger('service_id');
+
+            $table->date('date')->nullable();
+
+            $table->string('status')->default('agendado'); // agendado, remarcado, realizado, cancelado
             $table->timestamps();
         });
     }
