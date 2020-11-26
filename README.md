@@ -1,15 +1,18 @@
 <h1 align="center">Como Instalar o Sistema</h1>
 
-> Status do Projeto: em desenvolvimento :warning:
+> em desenvolvimento :warning:
 
-## Primeiro, verifique:
-<p align="justify"> Você deve clonar o projeto no diretório 'c:/xampp/htdocs', nenhuma pasta a mais ou a menos. É importante para as imagens funcionar. </p>
-<p align="justify"> Você deve ter um banco de dados com o nome 'pride'. </p>
-<p align="justify"> Depois de clonar, você deve rodar o comando 'php artisan migrate:fresh'. </p>
+## Siga os passos abaixo:
+<p align="justify"> Faça o download do projeto e cole na pasta htdocs, dentro da instalação do XAMPP.</p>
+<p align="justify"> Delete o arquivo 'storage' dentro da pasta public. </p>
+<p align="justify"> Crie um banco de dados chamado 'pride' e rode as migrações usando o comando 'php artisan migrate' para subir as tabelas. </p>
+<p align="justify"> Crie um link para a pasta 'storage' usando o comando 'php artisan storage:link'. </p>
+<p align="justify"> Acesse o sistema entrando na pasta 'public' e depois use o link de login 'auth/login'. </p>
 
 ## Informações úteis:
-<p align="justify"> Ao abrir o projeto no navegador, faça login com os dados salvos no form de login para acessar todos os recursos desenvolvido até o momento. </p>
+<p align="justify">  Cole a pasta exatamente dentro de 'htdocs', nenhuma pasta a mais ou a menos. </p>
+<p align="justify">  Você pode usar tanto o CMD para rodar os comando como o proprio terminal da IDE da sua preferencia. </p>
 
-## Pré-requisitos para rodar em localhost :exclamation:
+## Programas necessários :exclamation:
 
-:dash: XAMPP
+:dash: XAMPP atualizado.
