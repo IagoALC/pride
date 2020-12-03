@@ -1,12 +1,3 @@
 {
-    "/backend/assets/scss/boot.scss": "/backend/assets/scss/boot.scss?id=0724d72883c457051864",
-    "/backend/assets/js/login.js": "/backend/assets/js/login.js?id=f5fb75500797e7706d58",
-    "/backend/assets/js/register.js": "/backend/assets/js/register.js?id=c79cec01838f84942298",
-    "/backend/assets/js/recursos/blog/store.js": "/backend/assets/js/recursos/blog/store.js?id=b3e97f0fca9158c83405",
-    "/backend/assets/css/vendor.css": "/backend/assets/css/vendor.css?id=edb11bb832ea8eaccedd",
-    "/backend/assets/css/icons.css": "/backend/assets/css/icons.css?id=ffaf58b2187de0ab5f65",
-    "/backend/assets/css/app.css": "/backend/assets/css/app.css?id=4725f8e19109b8fc64bd",
-    "/backend/assets/css/app-dark.css": "/backend/assets/css/app-dark.css?id=b6bdea4a739e19203b6c",
-    "/backend/assets/js/vendor.js": "/backend/assets/js/vendor.js?id=504a91d109b971e7c79f",
-    "/backend/assets/js/app.js": "/backend/assets/js/app.js?id=d07b9f8ba295192fea82"
+    "/assets/css/theme.min.css": "/assets/css/theme.min.css?id=8e81cc77dd27284780ec"
 }

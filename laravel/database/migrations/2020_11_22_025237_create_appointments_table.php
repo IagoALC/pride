@@ -20,9 +20,10 @@ class CreateAppointmentsTable extends Migration
             $table->unsignedInteger('patient_id');
             $table->unsignedInteger('doctor_id');
 
-            $table->unsignedInteger('service_id');
+            $table->string('service_id');
 
-            $table->date('date')->nullable();
+            $table->date('day')->nullable();
+            $table->string('time')->nullable();
 
             $table->string('status')->default('agendado'); // agendado, remarcado, realizado, cancelado
             $table->timestamps();

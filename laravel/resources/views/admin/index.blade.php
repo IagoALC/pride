@@ -5,17 +5,19 @@
 @section('title-head', 'Home')
 
 @section('content-top-right')
-    <div>
-        <a href="{{ route('admin.consultas.create') }}" class="btn btn-success btn-rounded">
-            <i class="uil-calendar-alt"></i> Agendar Consulta
-        </a>
-    </div>
+    @if(Auth::user()->role == 'client')
+        <div>
+            <a href="{{ route('admin.consultas.create') }}" class="btn btn-success btn-rounded">
+                <i class="uil-calendar-alt"></i> Agendar Consulta
+            </a>
+        </div>
+    @endif
 @endsection
 
 @section('content')
 
     <div class="row">
-        @if(Auth::user()->role == 'doctor')
+        @if(Auth::user()->role == 'administrator')
             <div class="col-xl-3 col-lg-4">
                 <div class="card tilebox-one">
                     <div class="card-body">
@@ -143,6 +145,65 @@
                     </div>
                 </div>
             </div>
+        @elseif(Auth::user()->role == 'doctor')
+            <div class="col-xl-7">
+                <div class="alert alert-primary text-primary alert-dismissible fade show" role="alert"
+                     style="background-color: #fafbfe;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Bem vindo à bordo, {{ Auth::user()->first_name }}.</strong>
+                </div>
+            </div>
+
+            <div class="col-xl-7">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dropdown float-right">
+                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <i class="mdi mdi-dots-vertical"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">Preciso de ajuda</a>
+                            </div>
+                        </div>
+                        <h4 class="header-title mb-3">Seu calendário</h4>
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div data-provide="datepicker-inline" data-date-today-highlight="true"
+                                     class="calendar-widget">
+                                </div>
+                            </div> <!-- end col-->
+                            <div class="col-md-5">
+                                @if(count($appointments) >= 1)
+                                    <ul class="list-unstyled">
+                                        @foreach($appointments as $a)
+                                            <li class="mb-4">
+                                                <p class="text-muted mb-1 font-13">
+                                                    <i class="mdi mdi-calendar"></i> {{ date('d/m/Y', strtotime($a->day)) }}
+                                                    - {{ $a->time }}
+                                                </p>
+                                                <h5>
+                                                    <a href="{{ route('admin.consultas.show', ['consulta' => $a->code]) }}">{{ $a->service_id }}</a>
+                                                </h5>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <div class="text-center">
+                                        <small class="text-center">Você não possuí nenhum agendamento.</small>
+                                    </div>
+                                @endif
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div>
         @elseif(Auth::user()->role == 'client')
             <div class="col-xl-7">
                 <div class="alert alert-primary text-primary alert-dismissible fade show" role="alert"
@@ -181,11 +242,12 @@
                                         @foreach($appointments as $a)
                                             <li class="mb-4">
                                                 <p class="text-muted mb-1 font-13">
-                                                    <i class="mdi mdi-calendar"></i> {{ date('d/m/Y', strtotime($a->created_at)) }}
-                                                    - {{ date('H:i', strtotime($a->created_at)) }}
+                                                    <i class="mdi mdi-calendar"></i> {{ date('d/m/Y', strtotime($a->day)) }}
+                                                    - {{ $a->time }}
                                                 </p>
-                                                <h5><a href="{{ route('admin.consultas.show', ['consulta' => $a->code]) }}">Link para visualizar a
-                                                        consulta: {{ $a->service_id }}</a></h5>
+                                                <h5>
+                                                    <a href="{{ route('admin.consultas.show', ['consulta' => $a->code]) }}">{{ $a->service_id }}</a>
+                                                </h5>
                                             </li>
                                         @endforeach
                                     </ul>

@@ -27,27 +27,17 @@ class User extends Authenticatable
         'role',
         'first_name',
         'last_name',
-        'genre',
-        'date_of_birth',
-        'place_of_birth',
+
         'document',
-        'document_secondary',
-        'document_secondary_complement',
+
         'cover',
-        'came_from',
+
         'newsletter',
-        'zipcode',
-        'street',
-        'number',
-        'complement',
-        'neighborhood',
-        'state',
-        'city',
+
         'telephone',
         'cell',
         'appointment',
-        'store',
-        'blog',
+
         'email',
         'status'
     ];
@@ -71,62 +61,10 @@ class User extends Authenticatable
     ];
 
 
-    /**
-     * Set and Get Attr
-     *
-     * Role
-     */
-
-    /**
-     * Set and Get Attr
-     *
-     * Data
-     */
-
-    /**
-     * Set and Get Attr
-     *
-     * Address
-     */
-
-    /**
-     * Set and Get Attr
-     *
-     * Contact
-     */
-
-    /**
-     * Set and Get Attr
-     *
-     * Access
-     */
-
     public function setAppointmentAttribute($value)
     {
         $this->attributes['appointment'] = ($value === true || $value === 'on' ? 1 : 0);
     }
-
-    public function setStoreAttribute($value)
-    {
-        $this->attributes['store'] = ($value === true || $value === 'on' ? 1 : 0);
-    }
-
-    public function setBlogAttribute($value)
-    {
-        $this->attributes['blog'] = ($value === true || $value === 'on' ? 1 : 0);
-    }
-
-    /**
-     * Set and Get Attr
-     *
-     * Status
-     */
-
-    public function setStatusAttribute($value)
-    {
-        $this->attributes['status'] = ($value === true || $value === 'on' ? 1 : 0);
-    }
-
 
     public function setNewsletterAttribute($value)
     {
@@ -143,31 +81,6 @@ class User extends Authenticatable
         return substr($value, 0, 3) . '.' . substr($value, 3, 3) . '.' . substr($value, 6, 3) . '-' . substr($value, 9, 2);
     }
 
-    public function setDateOfBirthAttribute($value)
-    {
-        $this->attributes['date_of_birth'] = $this->convertStringToDate($value);
-    }
-
-    public function getDateOfBirthAttribute($value)
-    {
-        return date('d/m/Y', strtotime($value));
-    }
-
-    public function setIncomeAttribute($value)
-    {
-        $this->attributes['income'] = floatval($this->convertStringToDouble($value));
-    }
-
-    public function getIncomeAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
-
-    public function setZipcodeAttribute($value)
-    {
-        $this->attributes['zipcode'] = $this->clearField($value);
-    }
-
     public function setTelephoneAttribute($value)
     {
         $this->attributes['telephone'] = $this->clearField($value);
@@ -181,6 +94,11 @@ class User extends Authenticatable
     public function getCellAttribute($value)
     {
         return '(' . substr($value, 0, 2) . ') ' . substr($value, 2, 5) . '-' . substr($value, 7, 8);
+    }
+
+    public function getTelephoneAttribute($value)
+    {
+        return '(' . substr($value, 0, 2) . ') ' . substr($value, 2, 4) . '-' . substr($value, 6, 7);
     }
 
     public function setPasswordAttribute($value)

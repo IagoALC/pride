@@ -77,13 +77,12 @@
                         <li class="side-nav-item">
                             <a href="{{ route('admin.consultas.create') }}" class="side-nav-link">
                                 <i class="uil-calendar-alt"></i>
-                                <span class="badge badge-danger-lighten float-right">Black Friday</span>
                                 <span> Agendar </span>
                             </a>
                         </li>
                     @endif
 
-                    @if(Auth::user()->role == 'doctor')
+                    @if(Auth::user()->role == 'administrator')
                         <li class="side-nav-item">
                             <a href="{{ route('admin.consultas.index') }}" class="side-nav-link">
                                 <i class="uil-calendar-alt"></i>
@@ -96,6 +95,7 @@
                     <li class="side-nav-item">
                         <a href="{{ route('admin.consultas.historic') }}" class="side-nav-link">
                             <i class="uil-history-alt"></i>
+                            <span class="badge badge-warning-lighten float-right">Desenvolvimento</span>
                             <span> Histórico </span>
                         </a>
                     </li>
