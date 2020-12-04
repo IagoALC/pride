@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PerfilController extends Controller
 {
@@ -17,9 +18,18 @@ class PerfilController extends Controller
      */
     public function edit($id)
     {
+        $contagemConsultas = DB::table('appointments')
+            ->where([
+                ['patient_id', '=', Auth::user()->id]
+            ])->orWhere([
+                ['doctor_id', '=', Auth::user()->id],
+                ['status', '!=', 'solicitada'],
+                ['status', '!=', 'cancelada']
+            ])
+            ->count();
         $user = User::where('id', Auth::user()->id)->first();
         $contagemUsuarios = User::all()->count();
-        return view('dashboard.perfil.index', ['user' => $user, 'contagemUsuarios' => $contagemUsuarios]);
+        return view('dashboard.perfil.index', ['user' => $user, 'contagemUsuarios' => $contagemUsuarios, 'contagemConsultas' => $contagemConsultas]);
     }
 
     /**

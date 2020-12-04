@@ -135,7 +135,7 @@
     </script>
 </head>
 <!-- Body-->
-<body>
+<body style="@yield('body-style')">
 <div class="ajax_response"></div>
 <!-- Google Tag Manager (noscript)-->
 <noscript>
@@ -285,7 +285,7 @@
                         <ul class="dropdown-menu dropdown-menu-right" style="width: 15rem;">
                             <li><a class="dropdown-item d-flex align-items-center" href="{{ route('dashboard.consultas.index') }}"><i
                                             class="fe-shopping-bag font-size-base opacity-60 mr-2"></i>Consultas<span
-                                            class="ml-auto font-size-xs text-muted">2</span></a></li>
+                                            class="ml-auto font-size-xs text-muted">{{ $contagemConsultas }}</span></a></li>
                             <li class="dropdown-divider"></li>
 
                             @if(Auth::user()->role == 'admin')
@@ -460,9 +460,12 @@
 <script src="{{ URL::asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ URL::asset('assets/vendor/shufflejs/dist/shuffle.min.js') }}"></script>
 <script src="{{ URL::asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
+<script src="{{ URL::asset('assets/vendor/flatpickr/dist/plugins/rangePlugin.js') }}"></script>
 <!-- Main theme script-->
 <script src="{{ URL::asset('assets/js/theme.min.js') }}"></script>
 <!-- Registro script-->
 <script src="{{ URL::asset('assets/js/register.js') }}"></script>
+
+@yield('page-scripts')
 </body>
 </html>

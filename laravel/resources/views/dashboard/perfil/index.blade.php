@@ -83,7 +83,8 @@
                             <div class="form-group">
                                 <label for="document">CPF</label>
                                 <input class="form-control" type="text" id="document" name="document"
-                                       value="{{ old('document') ?? Auth::user()->document }}">
+                                       value="{{ old('document') ?? Auth::user()->document }}"
+                                       data-mask-format="000.000.000-00">
                             </div>
                         </div>
                         <div class="col-sm-6">

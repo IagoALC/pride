@@ -16,16 +16,15 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('code');
+            $table->string('code')->unique();
             $table->unsignedInteger('patient_id');
             $table->unsignedInteger('doctor_id');
 
             $table->string('service_id');
 
-            $table->date('day')->nullable();
-            $table->string('time')->nullable();
+            $table->dateTime('date');
 
-            $table->string('status')->default('agendado'); // agendado, remarcado, realizado, cancelado
+            $table->string('status'); // agendado, remarcado, realizado, cancelado
             $table->timestamps();
         });
     }

@@ -28,12 +28,7 @@
                             Dashboard</h3><a class="d-flex align-items-center nav-link-style px-4 py-3 {{ @isActive('dashboard.consultas.index') }}"
                                              href="{{ route('dashboard.consultas.index') }}"><i
                                     class="fe-shopping-bag font-size-lg opacity-60 mr-2"></i>Consultas<span
-                                    class="text-muted font-size-sm font-weight-normal ml-auto">2</span></a>
-
-                        <a class="d-flex align-items-center nav-link-style px-4 py-3 {{ @isActive('dashboard.consultas.index') }}"
-                           href="{{ route('dashboard.consultas.index') }}"><i
-                                    class="fe-calendar font-size-lg opacity-60 mr-2"></i>Histórico<span
-                                    class="text-muted font-size-sm font-weight-normal ml-auto">2</span></a>
+                                    class="text-muted font-size-sm font-weight-normal ml-auto">{{ $contagemConsultas }}</span></a>
 
                         @if(Auth::user()->role == 'admin')
                             <h3 class="d-block bg-secondary font-size-sm font-weight-semibold text-muted mb-0 px-4 py-3">

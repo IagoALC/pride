@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-xl-7 col-lg-8 col-md-10">
                     <div class="bg-light rounded-lg box-shadow-lg py-5 px-4">
-                        <form class="py-sm-2 px-sm-3">
+                        <form class="py-sm-2 px-sm-3" action="{{ route('website.consultas.store') }}" method="post">
+                            @csrf
                             <h1 class="text-center mb-4">Reserve sua consulta</h1>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
@@ -57,7 +58,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="rf-date">Quando você quer fazer?</label>
                                     <div class="input-group-overlay">
-                                        <input class="form-control appended-form-control cs-date-picker" name="reserva"
+                                        <input class="form-control appended-form-control cs-date-picker" name="date"
                                                id="reserva" type="text" placeholder="Escolha uma data / hora"
                                                data-datepicker-options="{&quot;enableTime&quot;: true, &quot;altInput&quot;: true, &quot;altFormat&quot;: &quot;F j, Y H:i&quot;, &quot;dateFormat&quot;: &quot;Y-m-d H:i&quot;, &quot;minDate&quot;: &quot;today&quot;}"
                                                id="rf-date" required>
@@ -65,16 +66,34 @@
                                                         class="fe-calendar"></i></span></div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="rf-company-size">Qual é o seu CPF?</label>
-                                    <input class="form-control" type="text" name="CPF" placeholder="Informe o seu CPF"
-                                           id="rf-company-size" required="">
+                                <div class="col-12 form-group">
+                                    <label class="form-label" for="medico">Qual médico você quer?</label>
+                                    <select class="fotm-control custom-select" id="rf-space" name="medico" required=""
+                                            id="medico">
+                                        <option value="" selected>Escolha um médico</option>
+                                        <optgroup label="Médicos">
+                                            @foreach($medicos as $medico)
+                                                <option value="{{ $medico->id }}">{{ $medico->first_name }} {{ $medico->last_name  }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
                                 </div>
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="rf-email">Qual é o seu email?</label>
-                                    <input class="form-control" type="email" name="email"
-                                           placeholder="Informe o seu email" id="rf-email" required="">
-                                </div>
+                                @if(!Auth::check() || Auth::user()->role == 'admin')
+                                    <div class="col-sm-6 form-group">
+                                        <label class="form-label" for="rf-company-size">Qual é o seu CPF?</label>
+                                        <input class="form-control" type="text" name="cpf"
+                                               placeholder="Informe o seu CPF"
+                                               id="rf-company-size" required="">
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label class="form-label" for="rf-email">Qual é o seu email?</label>
+                                        <input class="form-control" type="email" name="email"
+                                               placeholder="Informe o seu email" id="rf-email" required="">
+                                    </div>
+                                @elseif(Auth::check())
+                                    <input type="hidden" name="cpf" value="{{ Auth::user()->document }}">
+                                    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                                @endif
                             </div>
                             <div class="row align-items-center pt-2">
                                 <div class="col-sm-6 mb-4 mb-sm-0">
@@ -107,22 +126,26 @@
         <div class="cs-carousel">
             <div class="cs-carousel-inner"
                  data-carousel-options="{&quot;items&quot;: 4, &quot;controls&quot;: false, &quot;gutter&quot;: 15, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;410&quot;:{&quot;items&quot;:2}, &quot;580&quot;:{&quot;items&quot;:4}, &quot;740&quot;:{&quot;items&quot;: 4}}}">
-                <div class="text-center"><img class="mb-3" width="54" src="{{ URL::asset('assets/img/demo/coworking/icons/cube.svg') }}"
+                <div class="text-center"><img class="mb-3" width="54"
+                                              src="{{ URL::asset('assets/img/demo/coworking/icons/cube.svg') }}"
                                               alt="Total Area"/>
                     <div class="text-muted" style="font-size: 2.25rem;">21</div>
                     <h3 class="h5">Procedimentos</h3>
                 </div>
-                <div class="text-center"><img class="mb-3" width="54" src="{{ URL::asset('assets/img/demo/coworking/icons/24-hours.svg') }}"
+                <div class="text-center"><img class="mb-3" width="54"
+                                              src="{{ URL::asset('assets/img/demo/coworking/icons/24-hours.svg') }}"
                                               alt="24/7 Access"/>
                     <div class="text-muted" style="font-size: 2.25rem;">24/7</div>
                     <h3 class="h5">Agendamento</h3>
                 </div>
-                <div class="text-center"><img class="mb-3" width="54" src="{{ URL::asset('assets/img/demo/coworking/icons/building.svg') }}"
+                <div class="text-center"><img class="mb-3" width="54"
+                                              src="{{ URL::asset('assets/img/demo/coworking/icons/building.svg') }}"
                                               alt="3 Full Floors"/>
                     <div class="text-muted" style="font-size: 2.25rem;">3</div>
                     <h3 class="h5">Clínicas</h3>
                 </div>
-                <div class="text-center"><img class="mb-3" width="54" src="{{ URL::asset('assets/img/demo/coworking/icons/parking.svg') }}"
+                <div class="text-center"><img class="mb-3" width="54"
+                                              src="{{ URL::asset('assets/img/demo/coworking/icons/parking.svg') }}"
                                               alt="Parking"/>
                     <div class="text-muted" style="font-size: 2.25rem;">15</div>
                     <h3 class="h5">Vagas</h3>
@@ -132,14 +155,17 @@
     </section>
     <!-- Virtual tour-->
     <section class="jarallax bg-dark py-7" data-jarallax data-speed="0.25">
-        <div class="jarallax-img" style="background-image: url({{ URL::asset('assets/img/demo/coworking/virtual-tour-bg.jpg') }});"></div>
+        <div class="jarallax-img"
+             style="background-image: url({{ URL::asset('assets/img/demo/coworking/virtual-tour-bg.jpg') }});"></div>
         <div class="container text-center py-md-5"><a class="d-inline-block bg-primary rounded-circle" href="#"><img
-                        width="195" src="{{ URL::asset('assets/img/demo/coworking/icons/360-tour.svg') }}" alt="360 Tour Virtual"/></a></div>
+                        width="195" src="{{ URL::asset('assets/img/demo/coworking/icons/360-tour.svg') }}"
+                        alt="360 Tour Virtual"/></a></div>
     </section>
     <!-- Benefits-->
     <section class="container pb-5 pt-6 mb-md-2 py-md-7">
         <div class="row align-items-center">
-            <div class="col-md-6"><img class="d-block mx-auto" src="{{ URL::asset('assets/img/demo/coworking/illustration01.svg') }}"
+            <div class="col-md-6"><img class="d-block mx-auto"
+                                       src="{{ URL::asset('assets/img/demo/coworking/illustration01.svg') }}"
                                        alt="Illustration"/>
             </div>
             <div class="col-md-6 col-lg-5 offset-lg-1 pt-4 pt-md-0">
@@ -237,7 +263,8 @@
                                     <h3 class="h4 nav-heading mb-4"><a href="#">Tratamento para cicatrizes sem cirurgia
                                             plástica</a></h3><a
                                             class="media meta-link font-size-sm align-items-center pt-2" href="#"><img
-                                                class="rounded-circle" width="42" src="{{ URL::asset('assets/img/testimonials/02.jpg') }}"
+                                                class="rounded-circle" width="42"
+                                                src="{{ URL::asset('assets/img/testimonials/02.jpg') }}"
                                                 alt="Sanomi Smith"/>
                                         <div class="media-body pl-2 ml-1 mt-n1">por<span
                                                     class="font-weight-semibold ml-1">Eliza Maria</span></div>
@@ -259,7 +286,8 @@
                                     <h3 class="h4 nav-heading mb-4"><a href="#">Ácidos para a pele: descubra para que
                                             eles servem e como usar</a></h3><a
                                             class="media meta-link font-size-sm align-items-center pt-2" href="#"><img
-                                                class="rounded-circle" width="42" src="{{ URL::asset('assets/img/testimonials/04.jpg') }}"
+                                                class="rounded-circle" width="42"
+                                                src="{{ URL::asset('assets/img/testimonials/04.jpg') }}"
                                                 alt="Charlie Welch"/>
                                         <div class="media-body pl-2 ml-1 mt-n1">por<span
                                                     class="font-weight-semibold ml-1">Ricardo Welch</span></div>
@@ -281,7 +309,8 @@
                                     <h3 class="h4 nav-heading mb-4"><a href="#">Pele seca ou ressecada? Conheça as
                                             diferenças e tratamentos</a></h3><a
                                             class="media meta-link font-size-sm align-items-center pt-2" href="#"><img
-                                                class="rounded-circle" width="42" src="{{ URL::asset('assets/img/testimonials/09.jpg') }}"
+                                                class="rounded-circle" width="42"
+                                                src="{{ URL::asset('assets/img/testimonials/09.jpg') }}"
                                                 alt="Jessica Miller"/>
                                         <div class="media-body pl-2 ml-1 mt-n1">por<span
                                                     class="font-weight-semibold ml-1">Jessica Leite</span></div>
@@ -343,7 +372,8 @@
                             href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91476818218!2d-74.11976253858133!3d40.69740344296443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sua!4v1568574342685!5m2!1sen!2sua"
                             data-iframe="true"
                             data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Av. das Américas 700, Barra da Tijuca, RJ&lt;/h6&gt;"><img
-                                src="{{ URL::asset('assets/img/demo/coworking/map.jpg') }}" alt="Maps"/><span class="cs-gallery-caption"><i
+                                src="{{ URL::asset('assets/img/demo/coworking/map.jpg') }}" alt="Maps"/><span
+                                class="cs-gallery-caption"><i
                                     class="fe-maximize-2 font-size-xl mt-n1 mr-2"></i>Expandir o mapa</span>
                         <div class="position-absolute"
                              style="width: 48px; top: 50%; left: 50%; margin-top: -24px; margin-left: -24px;"><img

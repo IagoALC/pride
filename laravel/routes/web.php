@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'Website\WebsiteController@home')->name('website.home');
+Route::post('/consulta/reserva', 'Website\WebsiteController@consultaStore')->name('website.consultas.store');
+Route::get('/consulta/confirmar', 'Website\WebsiteController@consultasConfirmar')->name('website.consultas.confirmar');
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +32,9 @@ Route::group(['as' => 'auth.', 'namespace' => 'Auth', 'middleware' => 'guest', ]
 */
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'namespace' => 'Dashboard', 'middleware' => ['auth']], function () {
     // consultas
-    Route::get('/', 'DashboardController@consultas')->name('consultas.index');
-
-    // serviços
-    Route::get('/servicos', 'DashboardController@servicos')->name('servicos.index');
+    Route::put('consultas/{consulta}/cancelar', 'ConsultasController@cancelar')->name('consultas.cancelar');
+    Route::put('consultas/{consulta}/realizada', 'ConsultasController@realizada')->name('consultas.realizada');
+    Route::resource('consultas', 'ConsultasController');
 
     // usuários
     Route::resource('usuarios', 'UsuariosController');
@@ -42,29 +43,6 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'namespace' => 'Da
     Route::put('perfil/{perfil}/desativar', 'PerfilController@desativarConta')->name('perfil.desativar');
     Route::put('perfil/{perfil}/reativar', 'PerfilController@reativarConta')->name('perfil.reativar');
     Route::resource('perfil', 'PerfilController');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Protected Routes
-|--------------------------------------------------------------------------
-*/
-Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['auth'], 'namespace' => 'Dashboard'], function () {
-    //Dashboard Home
-    Route::get('', 'DashboardController@home')->name('home');
-    
-    // My Profile
-    Route::get('/minhaconta', 'UserController@myProfile')->name('myProfile');
-    Route::put('/minhaconta/{user}', 'UserController@myProfileUpdate')->name('myProfile.update');
-
-    // Appointment
-    Route::get('/consultas/historico', 'AppointmentController@historic')->name('consultas.historic');
-    Route::post('/consultas/{consulta}/realizada', 'AppointmentController@done')->name('consultas.done');
-    Route::resource('consultas', 'AppointmentController');
-
-    // Blog
-    Route::get('/blog/lixeira', 'PostController@trashed')->name('blog.trashed');
-    Route::resource('blog', 'PostController');
 });
 
 /*

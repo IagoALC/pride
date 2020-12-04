@@ -24,7 +24,7 @@ class InsertUsersRoles extends Migration
             'appointment' => true,
 
             'document' => '12345678900',
-            'email' => 'admin@pride.com',
+            'email' => 'alex.carvalho@pride.com',
             'email_verified_at' => now(),
             'password' => bcrypt('1234'), // password
             'remember_token' => Str::random(10),

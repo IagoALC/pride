@@ -50,7 +50,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('website.home');
+        return redirect()->route('auth.entrar');
     }
 
     private function authenticated(string $ip)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UsuariosController extends Controller
@@ -17,8 +18,17 @@ class UsuariosController extends Controller
     public function index()
     {
         $contagemUsuarios = User::all()->count();
+        $contagemConsultas = DB::table('appointments')
+            ->where([
+                ['patient_id', '=', Auth::user()->id]
+            ])->orWhere([
+                ['doctor_id', '=', Auth::user()->id],
+                ['status', '!=', 'solicitada'],
+                ['status', '!=', 'cancelada']
+            ])
+            ->count();
         $users = User::all();
-        return view('dashboard.usuarios.index', ['contagemUsuarios' => $contagemUsuarios, 'users' => $users]);
+        return view('dashboard.usuarios.index', ['contagemUsuarios' => $contagemUsuarios, 'users' => $users, 'contagemConsultas' => $contagemConsultas]);
     }
 
     /**
@@ -100,8 +110,17 @@ class UsuariosController extends Controller
     public function show($id)
     {
         $user = User::where('id', $id)->first();
+        $contagemConsultas = DB::table('appointments')
+            ->where([
+                ['patient_id', '=', Auth::user()->id]
+            ])->orWhere([
+                ['doctor_id', '=', Auth::user()->id],
+                ['status', '!=', 'solicitada'],
+                ['status', '!=', 'cancelada']
+            ])
+            ->count();
         $contagemUsuarios = User::all()->count();
-        return view('dashboard.usuarios.show', ['user' => $user, 'contagemUsuarios' => $contagemUsuarios]);
+        return view('dashboard.usuarios.show', ['user' => $user, 'contagemUsuarios' => $contagemUsuarios, 'contagemConsultas' => $contagemConsultas]);
     }
 
     /**
