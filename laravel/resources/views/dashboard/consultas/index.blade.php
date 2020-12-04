@@ -31,7 +31,7 @@
                     <!-- Primary alert -->
                         <div class="alert alert-primary" role="alert">
                             <i class="fe-clock font-size-xl mr-3"></i>
-                            Reserve uma consulta <a href="#message-compose" data-toggle="collapse" class="alert-link">clicando
+                            Reserve uma consulta <a href="{{ route('website.home') }}" class="alert-link">clicando
                                 aqui</a>.
                         </div>
                         <!-- Message compose form-->
@@ -183,7 +183,6 @@
                                         <div class="bg-faded-info @if($consulta->status == 'agendada')text-warning @elseif($consulta->status == 'confirmada')text-info @elseif($consulta->status == 'realizada')text-success @elseif($consulta->status == 'cancelada')text-danger @endif font-size-xs font-weight-medium py-1 px-3 rounded-sm my-1 mr-2">
                                             {{ $consulta->status }}
                                         </div>
-                                        <div class="text-body font-size-sm font-weight-medium my-1">R$ price</div>
                                     </a></div>
                             </div>
                             <div class="collapse" id="consulta-{{ $consulta->code }}" data-parent="#orders-accordion"
@@ -192,10 +191,6 @@
                                     <!-- Item-->
                                     <div class="d-sm-flex justify-content-between mb-3 pb-1">
                                         <div class="order-item media media-ie-fix d-block d-sm-flex mr-sm-3">
-                                            <a class="d-table mx-auto"><img class="d-block rounded"
-                                                                            width="105"
-                                                                            src="{{ URL::asset('assets/img/dashboard/orders/01.jpg') }}"
-                                                                            alt="Thumbnail"></a>
                                             <div class="media-body font-size-sm pt-2 pl-sm-3 text-center text-sm-left">
                                                 <h5 class="nav-heading font-size-sm mb-2"><a
                                                     >{{ $consulta->service_id }}</a></h5>
@@ -209,12 +204,8 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-between pt-3 border-top">
-                                        <div class="font-size-sm my-2 mr-2"><span
-                                                    class="text-muted mr-1">Paciente:</span><span
-                                                    class="font-weight-medium">{{ $consulta->patient_id }}</span></div>
-                                        <div class="font-size-sm my-2 mr-2"><span
-                                                    class="text-muted mr-1">Médico:</span><span
-                                                    class="font-weight-medium">{{ $consulta->doctor_id }}</span></div>
+
+
                                         @if(Auth::user()->role != 'cliente' AND $consulta->status == 'confirmada')
                                             <form action="{{ route('dashboard.consultas.realizada', ['consulta' => $consulta->id]) }}"
                                                   method="post">
@@ -230,6 +221,18 @@
                                                     @csrf
                                                     @method('put')
                                                     <button type="submit" class="btn btn-danger">Cancelar consulta
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @elseif(Auth::user()->role == 'cliente' AND $consulta->status == 'solicitada')
+                                            <div class="font-size-sm my-2">
+                                                <form action="{{ route('website.consultas.confirmar.put', ['consulta' => $consulta->id]) }}"
+                                                      method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" name="consulta_id" value="{{ $consulta->id }}">
+                                                    <input type="hidden" name="consulta_confirmar" value="confirmar">
+                                                    <button type="submit" class="btn btn-info">Confirmar consulta
                                                     </button>
                                                 </form>
                                             </div>

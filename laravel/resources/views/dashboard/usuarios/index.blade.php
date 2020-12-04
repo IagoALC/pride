@@ -83,16 +83,9 @@
                 <div class="d-flex align-items-center justify-content-between bg-secondary py-2 px-3">
                     <div class="py-1">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="select-all" data-master-checkbox-for="#message-list">
-                            <label class="custom-control-label" for="select-all">Select all</label>
-                        </div>
-                    </div>
-                    <div class="py-1">
-                        <div class="btn-group dropdown">
-                            <button class="dropdown-toggle btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="fe-eye-off mr-2"></i>Mark unread</a><a class="dropdown-item" href="#"><i class="fe-corner-up-left mr-2"></i>Reply</a><a class="dropdown-item" href="#"><i class="fe-corner-up-right mr-2"></i>Forward</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#"><i class="fe-trash-2 mr-2"></i>Delete</a>
-                            </div>
+                            <span class="mr-3"><label class="fe-award mr-1"></label> Administrador</span>
+                            <span class="mr-3"><label class="fe-heart mr-1"></label> Médico</span>
+                            <span class="mr-3"><label class="fe-user mr-1"></label> Cliente</span>
                         </div>
                     </div>
                 </div>
@@ -104,7 +97,7 @@
                             <tr id="item-message-1">
                                 <td class="py-3 align-middle" style="width: 2.5rem;">
                                     <div class="pl-2">
-                                        <label class="fe-award"></label>
+                                        <label class="@if($user->role == 'admin')fe-award @elseif($user->role == 'médico')fe-heart @elseif($user->role == 'cliente')fe-user @endif"></label>
                                     </div>
                                 </td>
                                 <td class="py-3 align-middle"><a class="media d-block d-sm-flex align-items-center text-decoration-none" href="{{ route('dashboard.usuarios.show', ['usuario' => $user->id]) }}"><img class="rounded-circle mb-2 mb-sm-0" width="42" src="{{ Storage::url($user->cover) }}" alt="{{ $user->first_name }} {{ $user->last_name }}">
@@ -121,15 +114,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!-- Pagination-->
-                <nav class="d-md-flex justify-content-between align-items-center text-center text-md-left pt-3">
-                    <div class="d-md-flex align-items-center w-100"><span class="font-size-sm text-muted mr-md-3">Showing 9 of 84 messages</span>
-                        <div class="progress w-100 my-3 mx-auto mx-md-0" style="max-width: 10rem; height: 4px;">
-                            <div class="progress-bar" role="progressbar" style="width: 12%;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-outline-primary btn-sm" type="button">Load older messages</button>
-                </nav>
             </div>
         </div>
     </div>

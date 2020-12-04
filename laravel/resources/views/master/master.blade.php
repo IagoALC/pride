@@ -284,8 +284,7 @@
                             {{ Auth::user()->first_name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right" style="width: 15rem;">
                             <li><a class="dropdown-item d-flex align-items-center" href="{{ route('dashboard.consultas.index') }}"><i
-                                            class="fe-shopping-bag font-size-base opacity-60 mr-2"></i>Consultas<span
-                                            class="ml-auto font-size-xs text-muted">{{ $contagemConsultas }}</span></a></li>
+                                            class="fe-shopping-bag font-size-base opacity-60 mr-2"></i>Consultas</a></li>
                             <li class="dropdown-divider"></li>
 
                             @if(Auth::user()->role == 'admin')

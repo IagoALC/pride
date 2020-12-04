@@ -41,10 +41,9 @@ class AuthController extends Controller
             return response()->json($json);
         }
 
-        $json['message'] = $this->message->success("Você será redirecionado para a plataforma")->render();
+//        $json['message'] = $this->message->success("Você será redirecionado para a plataforma")->render();
         $this->authenticated($request->getClientIp());
-        $json['redirect'] = route('dashboard.consultas.index');
-        return response()->json($json);
+        return redirect()->route('dashboard.consultas.index');
     }
 
     public function logout()
@@ -121,9 +120,8 @@ class AuthController extends Controller
         $user->status = 1;
         $user->save();
 
-        $json['message'] = $this->message->success("Você foi cadastrado com sucesso")->render();
-        $json['redirect'] = route('auth.cadastrar.sucesso');
-        return response()->json($json);
+//        $json['message'] = $this->message->success("Você foi cadastrado com sucesso")->render();
+        return redirect()->route('auth.cadastrar.sucesso');
     }
 
     public function cadastrarSucesso()

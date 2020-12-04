@@ -42,6 +42,11 @@ class User extends Authenticatable
         'status'
     ];
 
+    public function consultas()
+    {
+        return $this->hasMany(Appointment::class, 'patient_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

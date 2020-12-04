@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'Website\WebsiteController@home')->name('website.home');
 Route::post('/consulta/reserva', 'Website\WebsiteController@consultaStore')->name('website.consultas.store');
-Route::get('/consulta/confirmar', 'Website\WebsiteController@consultasConfirmar')->name('website.consultas.confirmar');
+Route::get('/consulta/{consulta}/confirmar', 'Website\WebsiteController@consultasConfirmar')->name('website.consultas.confirmar');
+Route::put('/consulta/{consulta}/confirmar', 'Website\WebsiteController@consultasConfirmarPut')->name('website.consultas.confirmar.put');
+Route::get('/consulta/sucesso', 'Website\WebsiteController@consultasSucesso')->name('website.confirmar.sucesso');
 
 /*
 |--------------------------------------------------------------------------

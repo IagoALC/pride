@@ -70,6 +70,7 @@ class ConsultasController extends Controller
     public function store(Request $request)
     {
         $cpf = $this->clearField($request->cpf);
+
         $verificaEmailCpf = DB::table('users')
             ->where([
                 ['document', '=', $cpf],
@@ -77,14 +78,12 @@ class ConsultasController extends Controller
             ])
             ->first();
 
-        $patient_id = $verificaEmailCpf->id;
-
         $appointment = new Appointment();
         $appointment->code = "S" . substr(uniqid(rand()), 0, 5);
         $appointment->service_id = $request->servico;
         $appointment->date = $request->date;
         $appointment->doctor_id = $request->medico;
-        $appointment->patient_id = $patient_id;
+        $appointment->patient_id = $verificaEmailCpf->first_name;
         if (Auth::user()->role == 'cliente'){
             if ($request->status) {
                 $appointment->status = $request->status;
