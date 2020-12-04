@@ -78,6 +78,21 @@ class WebsiteController extends Controller
         return view('website.sucesso');
     }
 
+    public function sobre()
+    {
+        return view('website.informacoes.sobre');
+    }
+
+    public function contato()
+    {
+        return view('website.informacoes.contato');
+    }
+
+    public function ajuda()
+    {
+        return view('website.informacoes.ajuda');
+    }
+
     private function clearField(?string $param)
     {
         if(empty($param)){

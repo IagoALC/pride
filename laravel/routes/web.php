@@ -13,6 +13,10 @@ Route::get('/consulta/{consulta}/confirmar', 'Website\WebsiteController@consulta
 Route::put('/consulta/{consulta}/confirmar', 'Website\WebsiteController@consultasConfirmarPut')->name('website.consultas.confirmar.put');
 Route::get('/consulta/sucesso', 'Website\WebsiteController@consultasSucesso')->name('website.confirmar.sucesso');
 
+Route::get('/informacoes/sobre', 'Website\WebsiteController@sobre')->name('website.informacoes.sobre');
+Route::get('/informacoes/contato', 'Website\WebsiteController@contato')->name('website.informacoes.contato');
+Route::get('/informacoes/ajuda', 'Website\WebsiteController@ajuda')->name('website.informacoes.ajuda');
+
 /*
 |--------------------------------------------------------------------------
 | Auth Routes
@@ -25,6 +29,8 @@ Route::group(['as' => 'auth.', 'namespace' => 'Auth', 'middleware' => 'guest', ]
     Route::get('/cadastrar', 'AuthController@cadastrar')->name('cadastrar');
     Route::post('/cadastrar', 'AuthController@cadastrarPost')->name('cadastrar.post');
     Route::get('/cadastrar/sucesso', 'AuthController@cadastrarSucesso')->name('cadastrar.sucesso');
+
+    Route::get('/recuperar', 'AuthController@senha')->name('senha');
 });
 
 /*

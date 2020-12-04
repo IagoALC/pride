@@ -22,13 +22,11 @@ class AuthController extends Controller
     public function entrarPost(Request $request)
     {
         if (in_array('', $request->only('email', 'password'))) {
-            $json['message'] = $this->message->dark("Oops, informe todos os dados para efetuar o login")->render();
-            return response()->json($json);
+            return redirect()->route('auth.entrar');
         }
 
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            $json['message'] = $this->message->dark("Oops, informe um e-mail válido")->render();
-            return response()->json($json);
+            return redirect()->route('auth.entrar');
         }
 
         $credentials = [
@@ -37,8 +35,7 @@ class AuthController extends Controller
         ];
 
         if (!Auth::attempt($credentials)) {
-            $json['message'] = $this->message->dark("Oops, usuário e senha não conferem")->render();
-            return response()->json($json);
+            return redirect()->route('auth.entrar');
         }
 
 //        $json['message'] = $this->message->success("Você será redirecionado para a plataforma")->render();
@@ -127,5 +124,10 @@ class AuthController extends Controller
     public function cadastrarSucesso()
     {
         return view('website.auth.sucesso');
+    }
+
+    public function senha()
+    {
+        return view('website.auth.senha');
     }
 }

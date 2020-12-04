@@ -183,7 +183,7 @@
                                 </label>
                             </div>
                             <div class="d-flex justify-content-between align-items-center form-group"><a
-                                        class="nav-link-style font-size-ms" href="#">Esqueceu sua senha?</a>
+                                        class="nav-link-style font-size-ms" href="{{ route('auth.senha') }}">Esqueceu sua senha?</a>
                             </div>
                             <button class="btn btn-primary btn-block" type="submit">Entrar</button>
                             <p class="font-size-sm pt-3 mb-0">Não tem uma conta? <a href='#' class='font-weight-medium'
@@ -321,7 +321,7 @@
                 <div class="cs-offcanvas-body">
                     <!-- Menu-->
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
+                        <li class="nav-item dropdown d-none"><a class="nav-link dropdown-toggle" href="#"
                                                          data-toggle="dropdown">Serviços</a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#"
@@ -384,7 +384,7 @@
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
                                                          data-toggle="dropdown">Informações</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="{{ route('website.informacoes.sobre') }}">
                                         <div class="d-flex align-items-center">
                                             <div class="font-size-xl text-muted"><i class="fe-file-text"></i></div>
                                             <div class="pl-3"><span class="d-block text-heading">Sobre</span>
@@ -393,7 +393,7 @@
                                         </div>
                                     </a></li>
                                 <li class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="{{ route('website.informacoes.contato') }}">
                                         <div class="d-flex align-items-center">
                                             <div class="font-size-xl text-muted"><i class="fe-mic"></i></div>
                                             <div class="pl-3"><span class="d-block text-heading">Contato</span>
@@ -401,8 +401,8 @@
                                             </div>
                                         </div>
                                     </a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">
+                                <li class="dropdown-divider d-none"></li>
+                                <li><a class="dropdown-item d-none" href="{{ route('website.informacoes.ajuda') }}">
                                         <div class="d-flex align-items-center">
                                             <div class="font-size-xl text-muted"><i class="fe-edit"></i></div>
                                             <div class="pl-3"><span class="d-block text-heading">Centro de Ajuda</span>

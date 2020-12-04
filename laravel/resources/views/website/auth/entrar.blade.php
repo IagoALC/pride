@@ -32,7 +32,7 @@
                             </label>
                         </div>
                         <div class="d-flex justify-content-between align-items-center form-group">
-                            <a class="nav-link-style font-size-ms" href="#">Esqueceu sua senha?</a>
+                            <a class="nav-link-style font-size-ms" href="{{ route('auth.senha') }}">Esqueceu sua senha?</a>
                         </div>
                         <button class="btn btn-primary btn-block" type="submit">Entrar</button>
                         <p class="font-size-sm pt-3 mb-0 text-center">Não tem uma conta? <a href="#"
@@ -63,14 +63,14 @@
                             <input class="form-control" type="password" placeholder="Senha" required="" name="password" >
                             <label class="cs-password-toggle-btn">
                                 <input class="custom-control-input" type="checkbox"><i
-                                        class="fe-eye cs-password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                                        class="fe-eye cs-password-toggle-indicator"></i><span class="sr-only">Mostrar senha</span>
                             </label>
                         </div>
                         <div class="cs-password-toggle form-group">
                             <input class="form-control" type="password" placeholder="Confirmar senha" required="" name="confirm_password" >
                             <label class="cs-password-toggle-btn">
                                 <input class="custom-control-input" type="checkbox"><i
-                                        class="fe-eye cs-password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                                        class="fe-eye cs-password-toggle-indicator"></i><span class="sr-only">Mostrar senha</span>
                             </label>
                         </div>
                         <div class="form-group">
